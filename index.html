@@ -14,10 +14,24 @@
   --am:#BA7517;--am2:#FAEEDA;--am3:#FAC775;
   --rd:#E24B4A;--rd2:#FCEBEB;
 }
-body{font-family:'Nunito',sans-serif;background:#fafafa;min-height:100vh;padding:1.5rem 1rem}
-.app{max-width:680px;margin:0 auto}
+body{font-family:'Nunito',sans-serif;background:#fff5f8;min-height:100vh;padding:1.5rem 1rem;position:relative;overflow-x:hidden}
 
-/* sync bar */
+/* ── 聖誕背景 ── */
+.xmas-bg{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
+.snowflake{position:absolute;top:-40px;color:#D4537E;opacity:.25;font-size:14px;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.xmas-lights{position:fixed;top:0;left:0;right:0;height:28px;display:flex;align-items:flex-end;padding:0 8px;gap:0;z-index:10;pointer-events:none}
+.light-wire{flex:1;height:2px;background:#2d2d2d;position:relative;top:-6px}
+.bulb{width:10px;height:14px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;flex-shrink:0;position:relative;top:0;animation:blink 2s ease-in-out infinite}
+.bulb::after{content:'';display:block;width:4px;height:4px;background:#2d2d2d;border-radius:1px;margin:0 auto;margin-top:-4px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
+.bulb:nth-child(4n+1){background:#E24B4A;animation-delay:0s}
+.bulb:nth-child(4n+2){background:#1D9E75;animation-delay:.3s}
+.bulb:nth-child(4n+3){background:#FAC775;animation-delay:.6s}
+.bulb:nth-child(4n+0){background:#7F77DD;animation-delay:.9s}
+
+.app{max-width:680px;margin:0 auto;position:relative;z-index:1;padding-top:28px}
+
 .sync-bar{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:10px;transition:all .3s}
 .sync-bar.ok{background:#E1F5EE;color:#085041}
 .sync-bar.saving{background:#FAEEDA;color:#633806}
@@ -28,35 +42,25 @@ body{font-family:'Nunito',sans-serif;background:#fafafa;min-height:100vh;padding
 .sync-bar.err .sync-dot{background:#E24B4A}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* loading */
 .loading{text-align:center;padding:3rem 1rem;color:#aaa;font-weight:700;font-size:15px}
 .loading-spinner{font-size:28px;display:block;margin-bottom:10px;animation:spin 1.2s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-.banner{text-align:center;padding:1.5rem 1rem 1rem;background:linear-gradient(135deg,#FBEAF0 0%,#EEEDFE 50%,#E1F5EE 100%);border-radius:20px;margin-bottom:1rem;position:relative;overflow:hidden;border:1.5px solid #F4C0D1}
-.banner-stars{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none}
-.star{position:absolute;border-radius:50%;background:#D4537E}
-.banner h1{font-size:22px;font-weight:800;color:#3C3489;margin-bottom:4px;letter-spacing:-.3px}
-.banner p{font-size:13px;color:#7F77DD;font-weight:600}
-.banner-icons{font-size:20px;margin-bottom:6px;letter-spacing:4px}
+.banner{text-align:center;padding:1.5rem 1rem 1.2rem;background:linear-gradient(135deg,#FBEAF0 0%,#EEEDFE 50%,#E1F5EE 100%);border-radius:20px;margin-bottom:1rem;position:relative;overflow:hidden;border:1.5px solid #F4C0D1}
+.banner-deco{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none}
+.banner h1{font-size:22px;font-weight:800;color:#3C3489;margin-bottom:4px;letter-spacing:-.3px;position:relative}
+.banner p{font-size:13px;color:#7F77DD;font-weight:600;position:relative}
+.banner-icons{font-size:22px;margin-bottom:6px;letter-spacing:4px;position:relative}
+.banner-trees{font-size:32px;letter-spacing:8px;position:relative;margin-bottom:4px}
+
 .tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
-.tab{flex:1;min-width:120px;padding:10px 4px;font-size:12px;font-weight:700;color:#666;background:#f5f5f5;border:1.5px solid #e0e0e0;cursor:pointer;border-radius:14px;transition:all .18s;font-family:'Nunito',sans-serif}
-.tab:hover{transform:translateY(-1px)}
+.tab{flex:1;min-width:100px;padding:10px 4px;font-size:12px;font-weight:700;color:#666;background:#fff;border:1.5px solid #e0e0e0;cursor:pointer;border-radius:14px;transition:all .18s;font-family:'Nunito',sans-serif}
+.tab:hover{transform:translateY(-2px)}
 .tab.on-it{background:#EEEDFE;color:#3C3489;border-color:#AFA9EC}
 .tab.on-tp{background:#E1F5EE;color:#085041;border-color:#5DCAA5}
 .tab.on-lg{background:#FBEAF0;color:#72243E;border-color:#ED93B1}
 .tab.on-in{background:#FAEEDA;color:#633806;border-color:#FAC775}
-.info-card{background:#fff;border:1.5px solid #e0e0e0;border-radius:16px;padding:16px;margin-bottom:12px}
-.info-card-hdr{display:flex;align-items:center;gap:8px;margin-bottom:14px}
-.info-card-title{font-size:14px;font-weight:800;color:#1a1a1a}
-.info-field{margin-bottom:12px}
-.info-label{font-size:11px;font-weight:800;color:#888;letter-spacing:.5px;margin-bottom:5px;text-transform:uppercase}
-.info-val{font-size:13px;font-weight:700;color:#1a1a1a;padding:9px 12px;background:#f5f5f5;border-radius:10px;min-height:38px;cursor:pointer;border:1.5px solid transparent;transition:border-color .15s;word-break:break-all}
-.info-val:hover{border-color:#CECBF6}
-.info-val.empty{color:#bbb;font-weight:600;font-style:italic}
-.info-row{display:flex;gap:10px}
-.info-row .info-field{flex:1;min-width:0}
-.edit-inline-row{display:flex;gap:6px}
+
 .day-card{border-radius:16px;margin-bottom:10px;overflow:hidden;border:1.5px solid #e0e0e0;background:#fff}
 .day-h{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer}
 .day-badge{font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-right:10px;letter-spacing:.3px}
@@ -83,19 +87,20 @@ body{font-family:'Nunito',sans-serif;background:#fafafa;min-height:100vh;padding
 .evt-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
 .evt-acts{display:flex;gap:2px;flex-shrink:0;margin-top:2px;opacity:0;transition:opacity .15s}
 .evt:hover .evt-acts{opacity:1}
-.sb{font-size:12px;padding:3px 6px;border:none;border-radius:6px;background:transparent;color:#666;cursor:pointer}
+.sb{font-size:12px;padding:3px 6px;border:none;border-radius:6px;background:transparent;color:#999;cursor:pointer}
 .sb:hover{background:#f5f5f5}
+
 .inp{font-size:13px;font-weight:600;padding:8px 11px;border:1.5px solid #e0e0e0;border-radius:10px;background:#fff;color:#1a1a1a;outline:none;width:100%;font-family:'Nunito',sans-serif}
 .inp:focus{border-color:#7F77DD}
 .sel{font-size:13px;font-weight:600;padding:8px 11px;border:1.5px solid #e0e0e0;border-radius:10px;background:#fff;color:#1a1a1a;outline:none;font-family:'Nunito',sans-serif}
 .btn{font-size:12px;font-weight:700;padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:10px;background:#fff;color:#1a1a1a;cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif;transition:all .15s}
 .btn:hover{background:#f5f5f5;transform:translateY(-1px)}
-.btn-pk{background:var(--pk);color:white;border-color:var(--pk)}.btn-pk:hover{background:#993556}
-.btn-pr{background:var(--pr);color:white;border-color:var(--pr)}.btn-pr:hover{background:#534AB7}
-.btn-tl{background:var(--tl);color:white;border-color:var(--tl)}.btn-tl:hover{background:#0F6E56}
-.btn-am{background:var(--am);color:white;border-color:var(--am)}
+.btn-pk{background:var(--pk);color:white;border-color:var(--pk)}.btn-pk:hover{background:#993556;transform:translateY(-1px)}
+.btn-pr{background:var(--pr);color:white;border-color:var(--pr)}.btn-pr:hover{background:#534AB7;transform:translateY(-1px)}
+.btn-tl{background:var(--tl);color:white;border-color:var(--tl)}.btn-tl:hover{background:#0F6E56;transform:translateY(-1px)}
+.btn-am{background:var(--am);color:white;border-color:var(--am)}.btn-am:hover{transform:translateY(-1px)}
 .btn-danger{color:#A32D2D;border-color:transparent;background:transparent}
-.edit-form{background:#f5f5f5;border-radius:12px;padding:12px;margin-top:2px}
+.edit-form{background:#f8f8f8;border-radius:12px;padding:12px;margin-top:2px;border:1.5px solid #eee}
 .add-form{border-radius:12px;padding:14px;margin-top:8px}
 .d0 .add-form{background:var(--pk2);border:1.5px solid var(--pk3)}
 .d1 .add-form{background:var(--pr2);border:1.5px solid var(--pr3)}
@@ -108,22 +113,35 @@ body{font-family:'Nunito',sans-serif;background:#fafafa;min-height:100vh;padding
 .d1 .add-btn-full{border-color:var(--pr3);color:var(--pr);background:var(--pr2)}
 .d2 .add-btn-full{border-color:var(--tl3);color:var(--tl);background:var(--tl2)}
 .d3 .add-btn-full{border-color:var(--am3);color:var(--am);background:var(--am2)}
+
+/* tips */
 .tip-grp{margin-bottom:1.25rem}
-.tip-cat{font-size:12px;font-weight:800;color:#666;margin-bottom:8px;padding-left:2px;letter-spacing:.4px}
-.tip{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:#fff;border:1.5px solid #e0e0e0;border-radius:14px;margin-bottom:7px}
+.tip-cat{font-size:12px;font-weight:800;color:#888;margin-bottom:8px;padding-left:2px;letter-spacing:.4px}
+.tip{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:#fff;border:1.5px solid #e0e0e0;border-radius:14px;margin-bottom:7px;transition:border-color .15s}
 .tip:hover{border-color:#CECBF6}
+.tip-i{font-size:16px;flex-shrink:0;margin-top:1px}
 .tip-t{font-size:13px;font-weight:700;color:#1a1a1a}
 .tip-d{font-size:12px;color:#666;margin-top:3px;line-height:1.6;font-weight:600}
+.tip-acts{display:flex;gap:2px;flex-shrink:0;opacity:0;transition:opacity .15s;margin-left:4px}
+.tip:hover .tip-acts{opacity:1}
+.tip-add-form{background:#EEEDFE;border:1.5px solid #CECBF6;border-radius:14px;padding:14px;margin-bottom:10px}
+.tip-add-label{font-size:12px;font-weight:800;color:#3C3489;margin-bottom:8px;letter-spacing:.3px}
+.tip-add-btn{width:100%;text-align:center;font-size:13px;font-weight:700;padding:10px;border-radius:12px;border:1.5px dashed #CECBF6;cursor:pointer;font-family:'Nunito',sans-serif;background:#EEEDFE;color:#7F77DD;margin-bottom:1.25rem;transition:all .15s}
+.tip-warning{background:#FCEBEB;border:1.5px solid #F09595;border-radius:14px;padding:12px 14px;margin-bottom:7px;display:flex;align-items:flex-start;gap:10px}
+.tip-warning .tip-t{color:#791F1F}
+.tip-warning .tip-d{color:#A32D2D}
+
+/* luggage */
 .prog-track{height:10px;border-radius:10px;background:var(--pk2);border:1.5px solid var(--pk3);margin-bottom:1rem;overflow:hidden}
 .prog-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--pk),var(--pr));transition:width .4s}
 .prog-lbl{font-size:13px;font-weight:700;color:#666;margin-bottom:6px;display:flex;justify-content:space-between}
 .prog-pct{font-size:12px;font-weight:800;color:var(--pk)}
-.lug-cat{font-size:12px;font-weight:800;color:#666;margin-bottom:8px;padding-left:2px;letter-spacing:.4px}
+.lug-cat{font-size:12px;font-weight:800;color:#888;margin-bottom:8px;padding-left:2px;letter-spacing:.4px}
 .lug-sec{margin-bottom:1rem}
 .item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border:1.5px solid #e0e0e0;border-radius:12px;margin-bottom:6px;transition:all .15s}
 .item:hover{border-color:#CECBF6}
 .item.chk{opacity:.5}
-.cb{width:18px;height:18px;border-radius:6px;border:2px solid #e0e0e0;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer}
+.cb{width:18px;height:18px;border-radius:6px;border:2px solid #ddd;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all .15s}
 .item.chk .cb{background:var(--pk);border-color:var(--pk)}
 .cm{display:none;color:white;font-size:11px;font-weight:800}
 .item.chk .cm{display:block}
@@ -135,9 +153,24 @@ body{font-family:'Nunito',sans-serif;background:#fafafa;min-height:100vh;padding
 .tag-g{background:#f5f5f5;color:#666}
 .item-acts{display:flex;gap:2px;flex-shrink:0;opacity:0;transition:opacity .15s}
 .item:hover .item-acts{opacity:1}
+
+/* info */
+.info-card{background:#fff;border:1.5px solid #e0e0e0;border-radius:16px;padding:16px;margin-bottom:12px}
+.info-card-hdr{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.info-card-title{font-size:14px;font-weight:800;color:#1a1a1a}
+.info-field{margin-bottom:12px}
+.info-label{font-size:11px;font-weight:800;color:#888;letter-spacing:.5px;margin-bottom:5px;text-transform:uppercase}
+.info-val{font-size:13px;font-weight:700;color:#1a1a1a;padding:9px 12px;background:#f5f5f5;border-radius:10px;min-height:38px;cursor:pointer;border:1.5px solid transparent;transition:border-color .15s;word-break:break-all}
+.info-val:hover{border-color:#CECBF6}
+.info-val.empty{color:#bbb;font-weight:600;font-style:italic}
+.info-row{display:flex;gap:10px}
+.info-row .info-field{flex:1;min-width:0}
+.edit-inline-row{display:flex;gap:6px}
 </style>
 </head>
 <body>
+<div class="xmas-lights" id="lights"></div>
+<div class="xmas-bg" id="xmas-bg"></div>
 <div class="app" id="app">
   <div class="loading"><span class="loading-spinner">⏳</span>連線中，請稍候…</div>
 </div>
@@ -146,10 +179,7 @@ body{font-family:'Nunito',sans-serif;background:#fafafa;min-height:100vh;padding
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getDatabase, ref, onValue, set } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
 
-const firebaseConfig = {
-  databaseURL: 'https://hk-trip-2026-40710-default-rtdb.firebaseio.com'
-};
-const app = initializeApp(firebaseConfig);
+const app = initializeApp({ databaseURL: 'https://hk-trip-2026-40710-default-rtdb.firebaseio.com' });
 const db = getDatabase(app);
 const tripRef = ref(db, 'trip');
 
@@ -179,6 +209,32 @@ const DEFAULT = {
       {time:'返台',name:'平安回家！',note:'帶著美好回憶出發',hl:true}
     ]}
   ],
+  tips:[
+    {cat:'🏰 迪士尼樂園',items:[
+      {i:'🎄',t:'聖誕遊行時間',d:'聖誕節前後通常每日多場遊行，建議提前 30-60 分鐘佔位，可查官網當日時刻表。'},
+      {i:'🎆',t:'煙火表演',d:'煙火約在晚上 8-9 點，建議在「美國小鎮大街」末端或「明日世界」附近觀看，視野最佳。'},
+      {i:'🎟',t:'提前購票',d:'聖誕節為旺季！強烈建議提前於官網購買門票，熱門時段可能售罄。'},
+      {i:'📸',t:'拍照攻略',d:'聖誕裝飾集中在美國小鎮大街和城堡前，下午光線最佳，適合拍照留念。'}
+    ]},
+    {cat:'🚨 住宿警告',warn:true,items:[
+      {i:'⚠️',t:'避開重慶大廈！',d:'地址：九龍尖沙咀彌敦道36-44號。環境複雜、治安問題多、曾多次發生火災，不適合觀光旅客入住。訂房前請確認酒店地址！',warn:true}
+    ]},
+    {cat:'🚇 交通 & 消費',items:[
+      {i:'🚇',t:'八達通卡',d:'抵港後在機場買八達通，港鐵、巴士、便利商店全通用，離港前退卡可拿回餘額。'},
+      {i:'✈',t:'機場快線',d:'最快進城方式，約 24 分鐘到香港站，也可提前一天在市區辦理登機手續。'},
+      {i:'💳',t:'貨幣兌換',d:'港幣 (HKD) 為流通貨幣，建議準備現金。機場匯率較差，可在市區找換店換。'}
+    ]},
+    {cat:'🌤 天氣 & 生活',items:[
+      {i:'🧥',t:'12月天氣',d:'香港12月氣溫約 15-22°C，早晚偏涼。室內冷氣強，建議攜帶薄外套備用。'},
+      {i:'🔌',t:'電源插頭',d:'香港使用英式三腳方形插頭 (Type G, 220V)，台灣電器一定要帶轉接頭！'},
+      {i:'📡',t:'網路',d:'可在台灣出發前購買香港 eSIM，或在機場購買本地 SIM 卡，價格實惠。'},
+      {i:'🗣',t:'語言',d:'當地主要語言為廣東話，但英文和普通話也通，景點工作人員多能溝通。'}
+    ]},
+    {cat:'🍜 美食推薦',items:[
+      {i:'🥐',t:'港式早茶',d:'必試蝦餃、燒賣、腸粉、蛋撻！推薦到老字號茶樓體驗，記得早去否則要等位。'},
+      {i:'🥩',t:'燒臘與雲吞麵',d:'叉燒飯、燒鵝是港式經典，沿街小店品質往往很高，可以大膽嘗試！'}
+    ]}
+  ],
   luggage:{
     '證件 & 財務 💳':[{l:'台灣護照（確認有效期）',t:'必備',c:false},{l:'信用卡 / 金融卡',t:'必備',c:false},{l:'港幣現金',t:'必備',c:false},{l:'電子機票確認信',t:'必備',c:false},{l:'酒店訂房確認信',t:'必備',c:false}],
     '電子 & 通訊 📱':[{l:'手機 & 充電線',t:'必備',c:false},{l:'英式三腳轉接頭 (Type G)',t:'必備',c:false},{l:'行動電源',t:'建議',c:false},{l:'eSIM 或香港 SIM 卡',t:'建議',c:false},{l:'相機 & 記憶卡',t:'選配',c:false}],
@@ -186,80 +242,45 @@ const DEFAULT = {
     '衛生 & 藥品 💊':[{l:'個人藥品（腸胃藥、感冒藥）',t:'建議',c:false},{l:'防曬乳',t:'建議',c:false},{l:'保濕 & 護唇膏（冬天乾燥）',t:'選配',c:false},{l:'口罩',t:'建議',c:false}],
     '迪士尼裝備 🏰':[{l:'迪士尼電子門票',t:'必備',c:false},{l:'舒適小背包',t:'建議',c:false},{l:'保溫瓶（樂園飲料好貴）',t:'選配',c:false},{l:'零食補充',t:'選配',c:false}]
   },
-  info:{
-    flight_out_date:'',flight_out_num:'',flight_out_dep:'',flight_out_arr:'',
-    flight_ret_date:'',flight_ret_num:'',flight_ret_dep:'',flight_ret_arr:'',
-    hotel_name:'',hotel_addr:'',hotel_checkin:'',hotel_checkout:'',hotel_phone:'',
-    budget:'',currency_rate:'',sim:'',other:''
-  }
+  info:{flight_out_date:'',flight_out_num:'',flight_out_dep:'',flight_out_arr:'',flight_ret_date:'',flight_ret_num:'',flight_ret_dep:'',flight_ret_arr:'',hotel_name:'',hotel_addr:'',hotel_checkin:'',hotel_checkout:'',hotel_phone:'',budget:'',currency_rate:'',sim:'',other:''}
 };
 
-const TIPS=[
-  {cat:'🏰 迪士尼樂園',items:[{i:'🎄',t:'聖誕遊行時間',d:'聖誕節前後通常每日多場遊行，建議提前 30-60 分鐘佔位，可查官網當日時刻表。'},{i:'🎆',t:'煙火表演',d:'煙火約在晚上 8-9 點，建議在「美國小鎮大街」末端或「明日世界」附近觀看，視野最佳。'},{i:'🎟',t:'提前購票',d:'聖誕節為旺季！強烈建議提前於官網購買門票，熱門時段可能售罄。'},{i:'📸',t:'拍照攻略',d:'聖誕裝飾集中在美國小鎮大街和城堡前，下午光線最佳，適合拍照留念。'}]},
-  {cat:'🚇 交通 & 消費',items:[{i:'🚇',t:'八達通卡',d:'抵港後在機場買八達通，港鐵、巴士、便利商店全通用，離港前退卡可拿回餘額。'},{i:'✈',t:'機場快線',d:'最快進城方式，約 24 分鐘到香港站，也可提前一天在市區辦理登機手續。'},{i:'💳',t:'貨幣兌換',d:'港幣 (HKD) 為流通貨幣，建議準備現金。機場匯率較差，可在市區找換店換。'}]},
-  {cat:'🌤 天氣 & 生活',items:[{i:'🧥',t:'12月天氣',d:'香港12月氣溫約 15-22°C，早晚偏涼。室內冷氣強，建議攜帶薄外套備用。'},{i:'🔌',t:'電源插頭',d:'香港使用英式三腳方形插頭 (Type G, 220V)，台灣電器一定要帶轉接頭！'},{i:'📡',t:'網路',d:'可在台灣出發前購買香港 eSIM，或在機場購買本地 SIM 卡，價格實惠。'},{i:'🗣',t:'語言',d:'當地主要語言為廣東話，但英文和普通話也通，景點工作人員多能溝通。'}]},
-  {cat:'🍜 美食推薦',items:[{i:'🥐',t:'港式早茶',d:'必試蝦餃、燒賣、腸粉、蛋撻！推薦到老字號茶樓體驗，記得早去否則要等位。'},{i:'🥩',t:'燒臘與雲吞麵',d:'叉燒飯、燒鵝是港式經典，沿街小店品質往往很高，可以大膽嘗試！'}]}
-];
-
 const TIMES=['早上','上午','中午','下午','傍晚','晚上'];
-function timeOpts(){
-  let h='<option value="">選擇時間</option>';
-  TIMES.forEach(t=>h+=`<option value="${t}">${t}</option>`);
-  h+='<optgroup label="── 指定時間 ──">';
-  for(let i=0;i<24;i++){['00','30'].forEach(m=>{const v=String(i).padStart(2,'0')+':'+m;h+=`<option value="${v}">${v}</option>`;});}
-  h+='</optgroup>';return h;
-}
+function timeOpts(){let h='<option value="">選擇時間</option>';TIMES.forEach(t=>h+=`<option value="${t}">${t}</option>`);h+='<optgroup label="── 指定時間 ──">';for(let i=0;i<24;i++){['00','30'].forEach(m=>{const v=String(i).padStart(2,'0')+':'+m;h+=`<option value="${v}">${v}</option>`;});}h+='</optgroup>';return h;}
 const TIME_HTML=timeOpts();
-
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-// UI state (not synced)
-const UI={tab:'itinerary',openDays:{1:true},editEvt:null,addForm:{},editItem:null,editInfo:null,syncStatus:'ok'};
-
-// Data state (synced to Firebase)
-let D = null;
-let saveTimer = null;
+const UI={tab:'itinerary',openDays:{1:true},editEvt:null,addForm:{},editItem:null,editInfo:null,syncStatus:'ok',showTipAdd:false,editTip:null};
+let D=null,saveTimer=null;
 
 function saveToFirebase(){
-  UI.syncStatus='saving';
-  renderSyncBar();
-  clearTimeout(saveTimer);
+  UI.syncStatus='saving';renderSyncBar();clearTimeout(saveTimer);
   saveTimer=setTimeout(()=>{
-    set(tripRef, D).then(()=>{
-      UI.syncStatus='ok';
-      renderSyncBar();
-    }).catch(()=>{
-      UI.syncStatus='err';
-      renderSyncBar();
-    });
-  }, 600);
+    set(tripRef,D).then(()=>{UI.syncStatus='ok';renderSyncBar();}).catch(()=>{UI.syncStatus='err';renderSyncBar();});
+  },600);
 }
-
 function renderSyncBar(){
-  const el=document.getElementById('sync-bar');
-  if(!el)return;
+  const el=document.getElementById('sync-bar');if(!el)return;
   const labels={ok:'已同步 ☁️',saving:'儲存中…',err:'同步失敗，請檢查網路'};
   el.className='sync-bar '+UI.syncStatus;
   el.innerHTML=`<div class="sync-dot"></div>${labels[UI.syncStatus]}`;
 }
 
 function iField(key,label,placeholder){
-  const v=(D.info&&D.info[key])||'';
-  const isEdit=UI.editInfo===key;
+  const v=(D.info&&D.info[key])||'';const isEdit=UI.editInfo===key;
   if(isEdit)return`<div class="info-field"><div class="info-label">${label}</div><div class="edit-inline-row"><input class="inp" id="if-${key}" value="${esc(v)}" placeholder="${placeholder}" onkeydown="if(event.key==='Enter')window.saveInfo('${key}')" style="flex:1"><button class="btn btn-am" style="font-size:11px;padding:5px 10px;white-space:nowrap" onclick="window.saveInfo('${key}')">存</button></div></div>`;
   return`<div class="info-field"><div class="info-label">${label}</div><div class="info-val ${v?'':'empty'}" onclick="window.editInfo('${key}')">${v?esc(v):placeholder}</div></div>`;
 }
 
 function render(){
-  if(!D){return;}
+  if(!D)return;
   const a=document.getElementById('app');
-  let h=`<div class="banner"><div class="banner-stars" id="bstars"></div><div class="banner-icons">✈ 🏰 🎆</div><h1>香港聖誕之旅 ✨</h1><p>12月24日 — 12月27日 · 2026</p></div>`;
+  let h=`<div class="banner"><div class="banner-deco" id="bdeco"></div><div class="banner-trees">🎄✨🏰✨🎄</div><h1>香港聖誕之旅 ✨</h1><p>12月24日 — 12月27日 · 2026</p></div>`;
   h+=`<div id="sync-bar" class="sync-bar ${UI.syncStatus}"><div class="sync-dot"></div>${UI.syncStatus==='ok'?'已同步 ☁️':UI.syncStatus==='saving'?'儲存中…':'同步失敗，請檢查網路'}</div>`;
-
-  const tabCls=['on-it','on-tp','on-lg','on-in'];
-  const tabs=[['itinerary','🗓 行程規劃'],['tips','📋 注意事項'],['luggage','🧳 行李清單'],['info','✈ 旅遊資訊']];
   h+='<div class="tabs">';
-  tabs.forEach(([id,lbl],i)=>h+=`<button class="tab ${UI.tab===id?tabCls[i]:''}" onclick="window.setTab('${id}')">${lbl}</button>`);
+  [['itinerary','🗓 行程','on-it'],['tips','📋 注意事項','on-tp'],['luggage','🧳 行李','on-lg'],['info','✈ 資訊','on-in']].forEach(([id,lbl,cls])=>{
+    h+=`<button class="tab ${UI.tab===id?cls:''}" onclick="window.setTab('${id}')">${lbl}</button>`;
+  });
   h+='</div>';
 
   if(UI.tab==='itinerary'){
@@ -282,6 +303,65 @@ function render(){
     h+='</div>';
   }
 
+  if(UI.tab==='tips'){
+    // add new tip form
+    if(UI.showTipAdd){
+      h+=`<div class="tip-add-form"><div class="tip-add-label">新增注意事項</div>
+        <div style="display:flex;gap:6px;margin-bottom:7px">
+          <input class="inp" id="tip-icon" value="💡" style="width:56px;flex:none;text-align:center">
+          <input class="inp" id="tip-title" placeholder="標題">
+        </div>
+        <input class="inp" id="tip-cat-in" placeholder="分類（例：🍜 美食推薦）" style="margin-bottom:7px">
+        <textarea class="inp" id="tip-desc" placeholder="說明內容" rows="3" style="resize:vertical;margin-bottom:8px"></textarea>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-pr" style="font-size:11px;padding:6px 14px" onclick="window.addTip()">新增</button>
+          <button class="btn" style="font-size:11px;padding:6px 14px" onclick="window.togTipAdd()">取消</button>
+        </div></div>`;
+    } else {
+      h+=`<button class="tip-add-btn" onclick="window.togTipAdd()">+ 新增注意事項</button>`;
+    }
+
+    D.tips.forEach((grp,gi)=>{
+      h+=`<div class="tip-grp"><div class="tip-cat">${grp.cat}</div>`;
+      grp.items.forEach((t,ti)=>{
+        const isEdit=UI.editTip===gi+'-'+ti;
+        if(isEdit){
+          h+=`<div class="tip-add-form" style="margin-bottom:7px"><div class="tip-add-label">編輯</div>
+            <div style="display:flex;gap:6px;margin-bottom:7px">
+              <input class="inp" id="etip-icon" value="${esc(t.i)}" style="width:56px;flex:none;text-align:center">
+              <input class="inp" id="etip-title" value="${esc(t.t)}" placeholder="標題">
+            </div>
+            <textarea class="inp" id="etip-desc" rows="3" style="resize:vertical;margin-bottom:8px">${esc(t.d)}</textarea>
+            <div style="display:flex;gap:6px">
+              <button class="btn btn-pr" style="font-size:11px;padding:6px 14px" onclick="window.saveTip(${gi},${ti})">儲存</button>
+              <button class="btn" style="font-size:11px;padding:6px 14px" onclick="window.cancelTipEdit()">取消</button>
+              <button class="btn btn-danger" style="font-size:11px;margin-left:auto" onclick="window.delTip(${gi},${ti})">刪除</button>
+            </div></div>`;
+        } else {
+          const warnCls=t.warn?'tip-warning':'tip';
+          h+=`<div class="${warnCls}"><span class="tip-i">${t.i}</span><div style="flex:1"><div class="tip-t">${esc(t.t)}</div><div class="tip-d">${esc(t.d)}</div></div><div class="tip-acts"><button class="sb" onclick="window.editTip(${gi},${ti})">✏️</button><button class="sb" onclick="window.delTip(${gi},${ti})">🗑️</button></div></div>`;
+        }
+      });
+      h+='</div>';
+    });
+  }
+
+  if(UI.tab==='luggage'){
+    const all=Object.values(D.luggage).flat();const total=all.length,done=all.filter(i=>i.c).length,pct=total?Math.round(done/total*100):0;
+    h+=`<div class="prog-lbl"><span>行李打包進度</span><span class="prog-pct">${done}/${total} 項 · ${pct}%</span></div><div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div>`;
+    Object.entries(D.luggage).forEach(([cat,items])=>{
+      h+=`<div class="lug-sec"><div class="lug-cat">${cat}</div>`;
+      items.forEach((it,idx)=>{
+        const isEdit=UI.editItem===cat+'-'+idx;const tc=it.t==='必備'?'tag-r':it.t==='建議'?'tag-b':'tag-g';
+        h+=`<div class="item ${it.c?'chk':''}">`;
+        if(isEdit){h+=`<div style="display:flex;gap:6px;flex:1;align-items:center"><input class="inp" id="ei-label" value="${esc(it.l)}" style="flex:1"><button class="btn btn-pk" style="font-size:11px;padding:5px 10px" onclick="window.saveItem('${esc(cat)}',${idx})">存</button><button class="btn" style="font-size:11px;padding:5px 10px" onclick="window.cancelItemEdit()">取消</button></div>`;}
+        else{h+=`<div class="cb" onclick="window.togItem('${esc(cat)}',${idx})"><span class="cm">✓</span></div><span class="il" onclick="window.togItem('${esc(cat)}',${idx})">${esc(it.l)}</span>${it.t?'<span class="tag '+tc+'">'+it.t+'</span>':''}<div class="item-acts"><button class="sb" onclick="window.editItem('${esc(cat)}',${idx})">✏️</button><button class="sb" onclick="window.delItem('${esc(cat)}',${idx})">🗑️</button></div>`;}
+        h+='</div>';
+      });h+='</div>';
+    });
+    h+=`<div style="display:flex;gap:8px;margin-top:10px"><input class="inp" id="new-item" placeholder="新增自訂物品..." onkeydown="if(event.key==='Enter')window.addItem()" style="flex:1"><button class="btn btn-pk" onclick="window.addItem()">+ 新增</button></div>`;
+  }
+
   if(UI.tab==='info'){
     h+=`<div class="info-card"><div class="info-card-hdr"><span style="font-size:18px">✈</span><div class="info-card-title">去程航班</div></div><div class="info-row">${iField('flight_out_date','日期','12月24日')}${iField('flight_out_num','航班號','例：CI916')}</div><div class="info-row">${iField('flight_out_dep','出發時間','例：08:30')}${iField('flight_out_arr','抵達時間','例：10:30')}</div></div>`;
     h+=`<div class="info-card"><div class="info-card-hdr"><span style="font-size:18px">🛬</span><div class="info-card-title">回程航班</div></div><div class="info-row">${iField('flight_ret_date','日期','12月27日')}${iField('flight_ret_num','航班號','例：CI917')}</div><div class="info-row">${iField('flight_ret_dep','出發時間','例：14:00')}${iField('flight_ret_arr','抵達時間','例：16:00')}</div></div>`;
@@ -290,110 +370,98 @@ function render(){
     h+=`<p style="font-size:12px;color:#bbb;text-align:center;font-weight:600;margin-top:4px">點擊任意欄位即可編輯，自動同步給所有旅伴 ✈</p>`;
   }
 
-  if(UI.tab==='tips'){
-    TIPS.forEach(g=>{h+=`<div class="tip-grp"><div class="tip-cat">${g.cat}</div>`;g.items.forEach(t=>{h+=`<div class="tip"><span style="font-size:16px;flex-shrink:0;margin-top:1px">${t.i}</span><div><div class="tip-t">${t.t}</div><div class="tip-d">${t.d}</div></div></div>`;});h+='</div>';});
-  }
-
-  if(UI.tab==='luggage'){
-    const all=Object.values(D.luggage).flat();
-    const total=all.length,done=all.filter(i=>i.c).length,pct=total?Math.round(done/total*100):0;
-    h+=`<div class="prog-lbl"><span>行李打包進度</span><span class="prog-pct">${done}/${total} 項 · ${pct}%</span></div><div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div>`;
-    Object.entries(D.luggage).forEach(([cat,items])=>{
-      h+=`<div class="lug-sec"><div class="lug-cat">${cat}</div>`;
-      items.forEach((it,idx)=>{
-        const isEdit=UI.editItem===cat+'-'+idx;
-        const tc=it.t==='必備'?'tag-r':it.t==='建議'?'tag-b':'tag-g';
-        h+=`<div class="item ${it.c?'chk':''}">`;
-        if(isEdit){h+=`<div style="display:flex;gap:6px;flex:1;align-items:center"><input class="inp" id="ei-label" value="${esc(it.l)}" style="flex:1"><button class="btn btn-pk" style="font-size:11px;padding:5px 10px" onclick="window.saveItem('${esc(cat)}',${idx})">存</button><button class="btn" style="font-size:11px;padding:5px 10px" onclick="window.cancelItemEdit()">取消</button></div>`;}
-        else{h+=`<div class="cb" onclick="window.togItem('${esc(cat)}',${idx})"><span class="cm">✓</span></div><span class="il" onclick="window.togItem('${esc(cat)}',${idx})">${esc(it.l)}</span>${it.t?'<span class="tag '+tc+'">'+it.t+'</span>':''}<div class="item-acts"><button class="sb" onclick="window.editItem('${esc(cat)}',${idx})">✏️</button><button class="sb" onclick="window.delItem('${esc(cat)}',${idx})">🗑️</button></div>`;}
-        h+='</div>';
-      });
-      h+='</div>';
-    });
-    h+=`<div style="display:flex;gap:8px;margin-top:10px"><input class="inp" id="new-item" placeholder="新增自訂物品..." onkeydown="if(event.key==='Enter')window.addItem()" style="flex:1"><button class="btn btn-pk" onclick="window.addItem()">+ 新增</button></div>`;
-  }
-
   a.innerHTML=h;
 
-  // stars
-  const bs=document.getElementById('bstars');
-  if(bs){for(let i=0;i<18;i++){const s=document.createElement('div');s.className='star';const sz=Math.random()*6+3;s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;opacity:${Math.random()*.2+.05}`;bs.appendChild(s);}}
+  if(UI.editEvt!==null){const el=document.getElementById('ed-time');if(el){const[di,ei]=UI.editEvt.split('-').map(Number);const cur=D.days[di].events[ei].time;let found=false;for(let o of el.options)if(o.value===cur){found=true;break;}if(!found){const opt=document.createElement('option');opt.value=cur;opt.text=cur;el.insertBefore(opt,el.options[1]);}el.value=cur;}}
 
-  // restore select for edit
-  if(UI.editEvt!==null){
-    const el=document.getElementById('ed-time');
-    if(el){const[di,ei]=UI.editEvt.split('-').map(Number);const cur=D.days[di].events[ei].time;let found=false;for(let o of el.options)if(o.value===cur){found=true;break;}if(!found){const opt=document.createElement('option');opt.value=cur;opt.text=cur;el.insertBefore(opt,el.options[1]);}el.value=cur;}
-  }
+  // banner sparkles
+  const bd=document.getElementById('bdeco');
+  if(bd){for(let i=0;i<12;i++){const s=document.createElement('div');s.style.cssText=`position:absolute;width:${Math.random()*5+2}px;height:${Math.random()*5+2}px;border-radius:50%;background:${['#D4537E','#7F77DD','#1D9E75','#FAC775'][Math.floor(Math.random()*4)]};left:${Math.random()*100}%;top:${Math.random()*100}%;opacity:${Math.random()*.3+.05}`;bd.appendChild(s);}}
 }
 
-// Listen to Firebase — renders whenever data changes from any device
-onValue(tripRef, snap=>{
+// ── Christmas decorations ──
+function initXmas(){
+  const bg=document.getElementById('xmas-bg');
+  const snowflakes=['❄','❅','❆','✦','✧','⭐','🌟'];
+  for(let i=0;i<22;i++){
+    const el=document.createElement('div');
+    el.className='snowflake';
+    el.textContent=snowflakes[Math.floor(Math.random()*snowflakes.length)];
+    const size=Math.random()*10+8;
+    el.style.cssText=`left:${Math.random()*100}%;font-size:${size}px;animation-duration:${Math.random()*10+8}s;animation-delay:${Math.random()*8}s;opacity:${Math.random()*.2+.05}`;
+    bg.appendChild(el);
+  }
+  const lightsEl=document.getElementById('lights');
+  const colors=['#E24B4A','#1D9E75','#FAC775','#7F77DD','#D4537E'];
+  let lh='';
+  for(let i=0;i<30;i++){
+    const c=colors[i%colors.length];
+    lh+=`<div class="bulb" style="background:${c};animation-delay:${(i*0.12).toFixed(2)}s"></div>`;
+    if(i<29)lh+=`<div class="light-wire"></div>`;
+  }
+  lightsEl.innerHTML=lh;
+}
+initXmas();
+
+onValue(tripRef,snap=>{
   const val=snap.val();
   if(val){
     D=val;
-    // ensure info object exists
     if(!D.info)D.info=Object.assign({},DEFAULT.info);
+    if(!D.tips)D.tips=DEFAULT.tips;
   } else {
-    // First time — write defaults
     D=JSON.parse(JSON.stringify(DEFAULT));
     set(tripRef,D);
   }
   render();
 });
 
-// Window handlers
 window.setTab=t=>{UI.tab=t;render()};
 window.togDay=i=>{UI.openDays[i]=!UI.openDays[i];render()};
 window.togAdd=i=>{UI.addForm[i]=!UI.addForm[i];render()};
-
-window.addEvt=di=>{
-  const time=document.getElementById('add-time-'+di).value||'自訂';
-  const name=document.getElementById('add-name-'+di).value.trim();
-  const note=document.getElementById('add-note-'+di).value.trim();
-  if(!name)return;
-  D.days[di].events.push({time,name,note,hl:false});
-  UI.addForm[di]=false;UI.openDays[di]=true;
-  saveToFirebase();render();
-};
-
+window.addEvt=di=>{const time=document.getElementById('add-time-'+di).value||'自訂';const name=document.getElementById('add-name-'+di).value.trim();const note=document.getElementById('add-note-'+di).value.trim();if(!name)return;D.days[di].events.push({time,name,note,hl:false});UI.addForm[di]=false;UI.openDays[di]=true;saveToFirebase();render();};
 window.editEvt=(di,ei)=>{UI.editEvt=di+'-'+ei;render()};
 window.cancelEdit=()=>{UI.editEvt=null;render()};
-window.saveEvt=(di,ei)=>{
-  const time=document.getElementById('ed-time').value||D.days[di].events[ei].time;
-  const name=document.getElementById('ed-name').value.trim();
-  const note=document.getElementById('ed-note').value.trim();
-  if(!name)return;
-  D.days[di].events[ei]={...D.days[di].events[ei],time,name,note};
-  UI.editEvt=null;saveToFirebase();render();
-};
+window.saveEvt=(di,ei)=>{const time=document.getElementById('ed-time').value||D.days[di].events[ei].time;const name=document.getElementById('ed-name').value.trim();const note=document.getElementById('ed-note').value.trim();if(!name)return;D.days[di].events[ei]={...D.days[di].events[ei],time,name,note};UI.editEvt=null;saveToFirebase();render();};
 window.delEvt=(di,ei)=>{D.days[di].events.splice(ei,1);UI.editEvt=null;saveToFirebase();render()};
+
+window.togTipAdd=()=>{UI.showTipAdd=!UI.showTipAdd;render()};
+window.addTip=()=>{
+  const i=document.getElementById('tip-icon').value.trim()||'💡';
+  const t=document.getElementById('tip-title').value.trim();
+  const d=document.getElementById('tip-desc').value.trim();
+  const cat=document.getElementById('tip-cat-in').value.trim()||'📌 自訂';
+  if(!t)return;
+  let grp=D.tips.find(g=>g.cat===cat);
+  if(!grp){grp={cat,items:[]};D.tips.push(grp);}
+  grp.items.push({i,t,d});
+  UI.showTipAdd=false;saveToFirebase();render();
+};
+window.editTip=(gi,ti)=>{UI.editTip=gi+'-'+ti;render()};
+window.cancelTipEdit=()=>{UI.editTip=null;render()};
+window.saveTip=(gi,ti)=>{
+  const i=document.getElementById('etip-icon').value.trim();
+  const t=document.getElementById('etip-title').value.trim();
+  const d=document.getElementById('etip-desc').value.trim();
+  if(!t)return;
+  D.tips[gi].items[ti]={...D.tips[gi].items[ti],i,t,d};
+  UI.editTip=null;saveToFirebase();render();
+};
+window.delTip=(gi,ti)=>{
+  D.tips[gi].items.splice(ti,1);
+  if(D.tips[gi].items.length===0)D.tips.splice(gi,1);
+  UI.editTip=null;saveToFirebase();render();
+};
 
 window.togItem=(cat,idx)=>{D.luggage[cat][idx].c=!D.luggage[cat][idx].c;saveToFirebase();render()};
 window.editItem=(cat,idx)=>{UI.editItem=cat+'-'+idx;render()};
 window.cancelItemEdit=()=>{UI.editItem=null;render()};
-window.saveItem=(cat,idx)=>{
-  const v=document.getElementById('ei-label').value.trim();
-  if(!v)return;D.luggage[cat][idx].l=v;UI.editItem=null;saveToFirebase();render();
-};
-window.delItem=(cat,idx)=>{
-  D.luggage[cat].splice(idx,1);
-  if(D.luggage[cat].length===0)delete D.luggage[cat];
-  UI.editItem=null;saveToFirebase();render();
-};
-window.addItem=()=>{
-  const el=document.getElementById('new-item');
-  const v=el.value.trim();if(!v)return;
-  if(!D.luggage['自訂物品 ⭐'])D.luggage['自訂物品 ⭐']=[];
-  D.luggage['自訂物品 ⭐'].push({l:v,t:'',c:false});
-  saveToFirebase();render();
-};
+window.saveItem=(cat,idx)=>{const v=document.getElementById('ei-label').value.trim();if(!v)return;D.luggage[cat][idx].l=v;UI.editItem=null;saveToFirebase();render();};
+window.delItem=(cat,idx)=>{D.luggage[cat].splice(idx,1);if(D.luggage[cat].length===0)delete D.luggage[cat];UI.editItem=null;saveToFirebase();render();};
+window.addItem=()=>{const el=document.getElementById('new-item');const v=el.value.trim();if(!v)return;if(!D.luggage['自訂物品 ⭐'])D.luggage['自訂物品 ⭐']=[];D.luggage['自訂物品 ⭐'].push({l:v,t:'',c:false});saveToFirebase();render();};
 
 window.editInfo=k=>{UI.editInfo=k;render();setTimeout(()=>{const el=document.getElementById('if-'+k);if(el){el.focus();el.select();}},30);};
-window.saveInfo=k=>{
-  const el=document.getElementById('if-'+k);
-  if(el){if(!D.info)D.info={};D.info[k]=el.value.trim();}
-  UI.editInfo=null;saveToFirebase();render();
-};
+window.saveInfo=k=>{const el=document.getElementById('if-'+k);if(el){if(!D.info)D.info={};D.info[k]=el.value.trim();}UI.editInfo=null;saveToFirebase();render();};
 </script>
 </body>
 </html>
