@@ -517,16 +517,18 @@ function render(){
         // 時間段標題列
         if(isEditTime){
           h+=`<div style="background:${col.bg};border:1.5px solid ${col.bd};border-radius:12px;padding:10px 12px;margin-bottom:4px">
-            <div style="font-size:12px;font-weight:800;color:${col.tx};margin-bottom:8px">⏰ ${esc(slot.label||slot.time)}</div>
+            <div style="font-size:11px;font-weight:800;color:${col.tx};margin-bottom:6px">編輯時間段</div>
+            <input class="inp" id="et-label-${slotIdx}" value="${esc(slot.label||slot.time)}" placeholder="名稱（例：抵港後、早上）" style="margin-bottom:6px">
             ${slotTimeForm('et-'+slotIdx)}
             <div style="display:flex;gap:6px">
-              <button onclick="window.saveSlotTime(${slotIdx})" style="font-size:11px;padding:5px 12px;background:${col.dot};color:white;border:none;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;flex:1">存</button>
+              <button onclick="window.saveSlotTime(${slotIdx})" style="font-size:11px;padding:5px 12px;background:${col.dot};color:white;border:none;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;flex:1">儲存</button>
               <button onclick="window.cancelSlotTimeEdit()" style="font-size:11px;padding:5px 10px;background:transparent;border:1.5px solid #e0e0e0;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:600">取消</button>
+              <button onclick="window.delPbSlot(${slotIdx})" style="font-size:11px;padding:5px 10px;background:transparent;border:1.5px solid #F4C0D1;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;color:#A32D2D">刪除</button>
             </div></div>`;
         } else {
           h+=`<div style="background:${col.bg};border:1.5px solid ${col.bd};border-radius:12px;padding:9px 12px;margin-bottom:4px;display:flex;align-items:center;gap:6px">
             <span style="font-size:13px;font-weight:800;color:${col.tx};flex:1">⏰ ${esc(slot.label||slot.time)}${slot.exactTime?'<span style="font-weight:600;opacity:.7;margin-left:4px">・'+esc(slot.exactTime)+'</span>':''}</span>
-            <button onclick="window.editSlotTime(${slotIdx})" style="font-size:10px;padding:3px 8px;background:white;border:1px solid ${col.bd};border-radius:6px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;color:${col.tx};white-space:nowrap">${slot.exactTime?'✏️ 時間':'＋ 時間'}</button>
+            <button onclick="window.editSlotTime(${slotIdx})" style="font-size:10px;padding:3px 8px;background:white;border:1px solid ${col.bd};border-radius:6px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;color:${col.tx};white-space:nowrap">✏️ 編輯</button>
           </div>`;
         }
 
@@ -798,8 +800,14 @@ window.insertPbSlot=slotIdx=>{
 };
 window.editSlotTime=slotIdx=>{UI.editSlotTime=slotIdx;UI.insertBefore=null;UI.addSlotDay=null;render()};
 window.cancelSlotTimeEdit=()=>{UI.editSlotTime=null;render()};
-window.saveSlotTime=slotIdx=>{const t=getSlotVal('et-'+slotIdx);if(t)D.puzzle.slots[slotIdx].exactTime=t;UI.editSlotTime=null;save();render()};
-window.delPbSlot=slotIdx=>{if(!confirm('確定刪除這個時間格？格內的卡片也會一起刪除。'))return;D.puzzle.slots.splice(slotIdx,1);save();render()};
+window.saveSlotTime=slotIdx=>{
+  const labelEl=document.getElementById('et-label-'+slotIdx);
+  if(labelEl&&labelEl.value.trim())D.puzzle.slots[slotIdx].label=labelEl.value.trim();
+  const t=getSlotVal('et-'+slotIdx);
+  if(t)D.puzzle.slots[slotIdx].exactTime=t;
+  UI.editSlotTime=null;save();render();
+};
+window.delPbSlot=slotIdx=>{D.puzzle.slots.splice(slotIdx,1);UI.editSlotTime=null;save();render()};
 
 window.togTipAdd=()=>{UI.showTipAdd=!UI.showTipAdd;render()};
 window.addTip=()=>{const i=document.getElementById('tip-icon').value.trim()||'💡';const t=document.getElementById('tip-title').value.trim();const d=document.getElementById('tip-desc').value.trim();const cat=document.getElementById('tip-cat-in').value.trim()||'📌 自訂';if(!t)return;let grp=D.tips.find(g=>g.cat===cat);if(!grp){grp={cat,items:[]};D.tips.push(grp);}grp.items.push({i,t,d});UI.showTipAdd=false;save();render();};
