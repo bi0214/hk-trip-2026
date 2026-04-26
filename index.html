@@ -14,65 +14,66 @@
   --am:#BA7517;--am2:#FAEEDA;--am3:#FAC775;
   --rd:#E24B4A;--rd2:#FCEBEB;
 }
-body{font-family:'Nunito',sans-serif;background:#fff5f8;min-height:100vh;padding:1.5rem 1rem;position:relative;overflow-x:hidden}
-
-/* ── 聖誕背景 ── */
+body{font-family:'Nunito',sans-serif;background:#fff5f8;min-height:100vh;padding:1rem;position:relative;overflow-x:hidden}
 .xmas-bg{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
-.snowflake{position:absolute;top:-40px;color:#D4537E;opacity:.25;font-size:14px;animation:fall linear infinite}
+.snowflake{position:absolute;top:-40px;color:#D4537E;opacity:.18;animation:fall linear infinite}
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
-.xmas-lights{position:fixed;top:0;left:0;right:0;height:28px;display:flex;align-items:flex-end;padding:0 8px;gap:0;z-index:10;pointer-events:none}
+.xmas-lights{position:fixed;top:0;left:0;right:0;height:28px;display:flex;align-items:flex-end;padding:0 8px;z-index:10;pointer-events:none}
 .light-wire{flex:1;height:2px;background:#2d2d2d;position:relative;top:-6px}
-.bulb{width:10px;height:14px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;flex-shrink:0;position:relative;top:0;animation:blink 2s ease-in-out infinite}
+.bulb{width:10px;height:14px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;flex-shrink:0;animation:blink 2s ease-in-out infinite}
 .bulb::after{content:'';display:block;width:4px;height:4px;background:#2d2d2d;border-radius:1px;margin:0 auto;margin-top:-4px}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.45}}
 .bulb:nth-child(4n+1){background:#E24B4A;animation-delay:0s}
 .bulb:nth-child(4n+2){background:#1D9E75;animation-delay:.3s}
 .bulb:nth-child(4n+3){background:#FAC775;animation-delay:.6s}
 .bulb:nth-child(4n+0){background:#7F77DD;animation-delay:.9s}
-
-.app{max-width:680px;margin:0 auto;position:relative;z-index:1;padding-top:28px}
-
-.sync-bar{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:10px;transition:all .3s}
-.sync-bar.ok{background:#E1F5EE;color:#085041}
-.sync-bar.saving{background:#FAEEDA;color:#633806}
-.sync-bar.err{background:#FCEBEB;color:#791F1F}
+.app{max-width:900px;margin:0 auto;position:relative;z-index:1;padding-top:32px}
+.sync-bar{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:8px;transition:all .3s}
+.sync-bar.ok{background:#E1F5EE;color:#085041}.sync-bar.saving{background:#FAEEDA;color:#633806}.sync-bar.err{background:#FCEBEB;color:#791F1F}
 .sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.sync-bar.ok .sync-dot{background:#1D9E75}
-.sync-bar.saving .sync-dot{background:#BA7517;animation:pulse .8s infinite}
-.sync-bar.err .sync-dot{background:#E24B4A}
+.sync-bar.ok .sync-dot{background:#1D9E75}.sync-bar.saving .sync-dot{background:#BA7517;animation:pulse .8s infinite}.sync-bar.err .sync-dot{background:#E24B4A}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-
-.loading{text-align:center;padding:3rem 1rem;color:#aaa;font-weight:700;font-size:15px}
+.loading{text-align:center;padding:3rem 1rem;color:#aaa;font-weight:700}
 .loading-spinner{font-size:28px;display:block;margin-bottom:10px;animation:spin 1.2s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-.banner{text-align:center;padding:1.5rem 1rem 1.2rem;background:linear-gradient(135deg,#FBEAF0 0%,#EEEDFE 50%,#E1F5EE 100%);border-radius:20px;margin-bottom:1rem;position:relative;overflow:hidden;border:1.5px solid #F4C0D1}
-.banner-deco{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none}
-.banner h1{font-size:22px;font-weight:800;color:#3C3489;margin-bottom:4px;letter-spacing:-.3px;position:relative}
-.banner p{font-size:13px;color:#7F77DD;font-weight:600;position:relative}
-.banner-icons{font-size:22px;margin-bottom:6px;letter-spacing:4px;position:relative}
-.banner-trees{font-size:32px;letter-spacing:8px;position:relative;margin-bottom:4px}
-
+.banner{text-align:center;padding:1.2rem 1rem 1rem;background:linear-gradient(135deg,#FBEAF0 0%,#EEEDFE 50%,#E1F5EE 100%);border-radius:20px;margin-bottom:1rem;position:relative;overflow:hidden;border:1.5px solid #F4C0D1}
+.banner h1{font-size:20px;font-weight:800;color:#3C3489;margin-bottom:2px}
+.banner p{font-size:12px;color:#7F77DD;font-weight:600}
+.banner-trees{font-size:22px;letter-spacing:6px;margin-bottom:4px}
 .tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
-.tab{flex:1;min-width:100px;padding:10px 4px;font-size:12px;font-weight:700;color:#666;background:#fff;border:1.5px solid #e0e0e0;cursor:pointer;border-radius:14px;transition:all .18s;font-family:'Nunito',sans-serif}
+.tab{flex:1;min-width:80px;padding:9px 4px;font-size:11px;font-weight:700;color:#666;background:#fff;border:1.5px solid #e0e0e0;cursor:pointer;border-radius:12px;transition:all .15s;font-family:'Nunito',sans-serif;text-align:center}
 .tab:hover{transform:translateY(-2px)}
 .tab.on-it{background:#EEEDFE;color:#3C3489;border-color:#AFA9EC}
 .tab.on-tp{background:#E1F5EE;color:#085041;border-color:#5DCAA5}
 .tab.on-lg{background:#FBEAF0;color:#72243E;border-color:#ED93B1}
 .tab.on-in{background:#FAEEDA;color:#633806;border-color:#FAC775}
+.tab.on-wb{background:#F0FFFE;color:#0B5E5A;border-color:#5DCFCB}
+.tab.on-pb{background:#F5F0FF;color:#3D1B8E;border-color:#9B7FE0}
+.inp{font-size:13px;font-weight:600;padding:8px 11px;border:1.5px solid #e0e0e0;border-radius:10px;background:#fff;color:#1a1a1a;outline:none;width:100%;font-family:'Nunito',sans-serif}
+.inp:focus{border-color:#7F77DD}
+.sel{font-size:13px;font-weight:600;padding:8px 11px;border:1.5px solid #e0e0e0;border-radius:10px;background:#fff;color:#1a1a1a;outline:none;font-family:'Nunito',sans-serif}
+.btn{font-size:12px;font-weight:700;padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:10px;background:#fff;color:#1a1a1a;cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif;transition:all .15s}
+.btn:hover{background:#f5f5f5;transform:translateY(-1px)}
+.btn-pk{background:var(--pk);color:#fff;border-color:var(--pk)}.btn-pk:hover{background:#993556}
+.btn-pr{background:var(--pr);color:#fff;border-color:var(--pr)}.btn-pr:hover{background:#534AB7}
+.btn-tl{background:var(--tl);color:#fff;border-color:var(--tl)}.btn-tl:hover{background:#0F6E56}
+.btn-am{background:var(--am);color:#fff;border-color:var(--am)}
+.btn-cy{background:#1AAEAA;color:#fff;border-color:#1AAEAA}.btn-cy:hover{background:#0E7E7B}
+.btn-vl{background:#6C4FC4;color:#fff;border-color:#6C4FC4}.btn-vl:hover{background:#4D37A0}
+.btn-danger{color:#A32D2D;border-color:transparent;background:transparent}
+.sb{font-size:12px;padding:3px 6px;border:none;border-radius:6px;background:transparent;color:#999;cursor:pointer}
+.sb:hover{background:#f5f5f5}
 
+/* ── 行程 ── */
 .day-card{border-radius:16px;margin-bottom:10px;overflow:hidden;border:1.5px solid #e0e0e0;background:#fff}
-.day-h{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer}
-.day-badge{font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-right:10px;letter-spacing:.3px}
-.d0 .day-badge{background:#FBEAF0;color:#72243E}
-.d1 .day-badge{background:#EEEDFE;color:#3C3489}
-.d2 .day-badge{background:#E1F5EE;color:#085041}
-.d3 .day-badge{background:#FAEEDA;color:#633806}
+.day-h{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer}
+.day-badge{font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;margin-right:10px}
+.d0 .day-badge{background:#FBEAF0;color:#72243E}.d1 .day-badge{background:#EEEDFE;color:#3C3489}
+.d2 .day-badge{background:#E1F5EE;color:#085041}.d3 .day-badge{background:#FAEEDA;color:#633806}
 .day-name{font-size:14px;font-weight:700;color:#1a1a1a}
 .day-date{font-size:12px;color:#666;font-weight:600}
 .chev{font-size:11px;color:#666;transition:transform .2s;display:inline-block}
-.day-body{padding:0 16px 14px;display:none}
-.day-body.open{display:block}
+.day-body{padding:0 16px 14px;display:none}.day-body.open{display:block}
 .tl{position:relative;padding-left:22px}
 .tl::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:2px;border-radius:2px}
 .d0 .tl::before{background:#F4C0D1}.d1 .tl::before{background:#CECBF6}.d2 .tl::before{background:#9FE1CB}.d3 .tl::before{background:#FAC775}
@@ -87,34 +88,17 @@ body{font-family:'Nunito',sans-serif;background:#fff5f8;min-height:100vh;padding
 .evt-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
 .evt-acts{display:flex;gap:2px;flex-shrink:0;margin-top:2px;opacity:0;transition:opacity .15s}
 .evt:hover .evt-acts{opacity:1}
-.sb{font-size:12px;padding:3px 6px;border:none;border-radius:6px;background:transparent;color:#999;cursor:pointer}
-.sb:hover{background:#f5f5f5}
-
-.inp{font-size:13px;font-weight:600;padding:8px 11px;border:1.5px solid #e0e0e0;border-radius:10px;background:#fff;color:#1a1a1a;outline:none;width:100%;font-family:'Nunito',sans-serif}
-.inp:focus{border-color:#7F77DD}
-.sel{font-size:13px;font-weight:600;padding:8px 11px;border:1.5px solid #e0e0e0;border-radius:10px;background:#fff;color:#1a1a1a;outline:none;font-family:'Nunito',sans-serif}
-.btn{font-size:12px;font-weight:700;padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:10px;background:#fff;color:#1a1a1a;cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif;transition:all .15s}
-.btn:hover{background:#f5f5f5;transform:translateY(-1px)}
-.btn-pk{background:var(--pk);color:white;border-color:var(--pk)}.btn-pk:hover{background:#993556;transform:translateY(-1px)}
-.btn-pr{background:var(--pr);color:white;border-color:var(--pr)}.btn-pr:hover{background:#534AB7;transform:translateY(-1px)}
-.btn-tl{background:var(--tl);color:white;border-color:var(--tl)}.btn-tl:hover{background:#0F6E56;transform:translateY(-1px)}
-.btn-am{background:var(--am);color:white;border-color:var(--am)}.btn-am:hover{transform:translateY(-1px)}
-.btn-danger{color:#A32D2D;border-color:transparent;background:transparent}
 .edit-form{background:#f8f8f8;border-radius:12px;padding:12px;margin-top:2px;border:1.5px solid #eee}
 .add-form{border-radius:12px;padding:14px;margin-top:8px}
-.d0 .add-form{background:var(--pk2);border:1.5px solid var(--pk3)}
-.d1 .add-form{background:var(--pr2);border:1.5px solid var(--pr3)}
-.d2 .add-form{background:var(--tl2);border:1.5px solid var(--tl3)}
-.d3 .add-form{background:var(--am2);border:1.5px solid var(--am3)}
-.add-form-label{font-size:12px;font-weight:800;margin-bottom:8px;letter-spacing:.3px}
+.d0 .add-form{background:var(--pk2);border:1.5px solid var(--pk3)}.d1 .add-form{background:var(--pr2);border:1.5px solid var(--pr3)}
+.d2 .add-form{background:var(--tl2);border:1.5px solid var(--tl3)}.d3 .add-form{background:var(--am2);border:1.5px solid var(--am3)}
+.add-form-label{font-size:12px;font-weight:800;margin-bottom:8px}
 .d0 .add-form-label{color:#72243E}.d1 .add-form-label{color:#3C3489}.d2 .add-form-label{color:#085041}.d3 .add-form-label{color:#633806}
 .add-btn-full{width:100%;text-align:center;font-size:13px;font-weight:700;padding:10px;border-radius:12px;margin-top:8px;border-style:dashed;border-width:1.5px;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .15s}
-.d0 .add-btn-full{border-color:var(--pk3);color:var(--pk);background:var(--pk2)}
-.d1 .add-btn-full{border-color:var(--pr3);color:var(--pr);background:var(--pr2)}
-.d2 .add-btn-full{border-color:var(--tl3);color:var(--tl);background:var(--tl2)}
-.d3 .add-btn-full{border-color:var(--am3);color:var(--am);background:var(--am2)}
+.d0 .add-btn-full{border-color:var(--pk3);color:var(--pk);background:var(--pk2)}.d1 .add-btn-full{border-color:var(--pr3);color:var(--pr);background:var(--pr2)}
+.d2 .add-btn-full{border-color:var(--tl3);color:var(--tl);background:var(--tl2)}.d3 .add-btn-full{border-color:var(--am3);color:var(--am);background:var(--am2)}
 
-/* tips */
+/* ── 注意事項 ── */
 .tip-grp{margin-bottom:1.25rem}
 .tip-cat{font-size:12px;font-weight:800;color:#888;margin-bottom:8px;padding-left:2px;letter-spacing:.4px}
 .tip{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:#fff;border:1.5px solid #e0e0e0;border-radius:14px;margin-bottom:7px;transition:border-color .15s}
@@ -125,13 +109,11 @@ body{font-family:'Nunito',sans-serif;background:#fff5f8;min-height:100vh;padding
 .tip-acts{display:flex;gap:2px;flex-shrink:0;opacity:0;transition:opacity .15s;margin-left:4px}
 .tip:hover .tip-acts{opacity:1}
 .tip-add-form{background:#EEEDFE;border:1.5px solid #CECBF6;border-radius:14px;padding:14px;margin-bottom:10px}
-.tip-add-label{font-size:12px;font-weight:800;color:#3C3489;margin-bottom:8px;letter-spacing:.3px}
 .tip-add-btn{width:100%;text-align:center;font-size:13px;font-weight:700;padding:10px;border-radius:12px;border:1.5px dashed #CECBF6;cursor:pointer;font-family:'Nunito',sans-serif;background:#EEEDFE;color:#7F77DD;margin-bottom:1.25rem;transition:all .15s}
 .tip-warning{background:#FCEBEB;border:1.5px solid #F09595;border-radius:14px;padding:12px 14px;margin-bottom:7px;display:flex;align-items:flex-start;gap:10px}
-.tip-warning .tip-t{color:#791F1F}
-.tip-warning .tip-d{color:#A32D2D}
+.tip-warning .tip-t{color:#791F1F}.tip-warning .tip-d{color:#A32D2D}
 
-/* luggage */
+/* ── 行李 ── */
 .prog-track{height:10px;border-radius:10px;background:var(--pk2);border:1.5px solid var(--pk3);margin-bottom:1rem;overflow:hidden}
 .prog-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--pk),var(--pr));transition:width .4s}
 .prog-lbl{font-size:13px;font-weight:700;color:#666;margin-bottom:6px;display:flex;justify-content:space-between}
@@ -139,33 +121,85 @@ body{font-family:'Nunito',sans-serif;background:#fff5f8;min-height:100vh;padding
 .lug-cat{font-size:12px;font-weight:800;color:#888;margin-bottom:8px;padding-left:2px;letter-spacing:.4px}
 .lug-sec{margin-bottom:1rem}
 .item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border:1.5px solid #e0e0e0;border-radius:12px;margin-bottom:6px;transition:all .15s}
-.item:hover{border-color:#CECBF6}
-.item.chk{opacity:.5}
+.item:hover{border-color:#CECBF6}.item.chk{opacity:.5}
 .cb{width:18px;height:18px;border-radius:6px;border:2px solid #ddd;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all .15s}
 .item.chk .cb{background:var(--pk);border-color:var(--pk)}
-.cm{display:none;color:white;font-size:11px;font-weight:800}
-.item.chk .cm{display:block}
-.il{font-size:13px;font-weight:600;color:#1a1a1a;flex:1;cursor:pointer}
-.item.chk .il{text-decoration:line-through;color:#999}
+.cm{display:none;color:white;font-size:11px;font-weight:800}.item.chk .cm{display:block}
+.il{font-size:13px;font-weight:600;color:#1a1a1a;flex:1;cursor:pointer}.item.chk .il{text-decoration:line-through;color:#999}
 .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px}
-.tag-r{background:var(--rd2);color:#791F1F}
-.tag-b{background:var(--pr2);color:#3C3489}
-.tag-g{background:#f5f5f5;color:#666}
-.item-acts{display:flex;gap:2px;flex-shrink:0;opacity:0;transition:opacity .15s}
-.item:hover .item-acts{opacity:1}
+.tag-r{background:var(--rd2);color:#791F1F}.tag-b{background:var(--pr2);color:#3C3489}.tag-g{background:#f5f5f5;color:#666}
+.item-acts{display:flex;gap:2px;flex-shrink:0;opacity:0;transition:opacity .15s}.item:hover .item-acts{opacity:1}
 
-/* info */
+/* ── 旅遊資訊 ── */
 .info-card{background:#fff;border:1.5px solid #e0e0e0;border-radius:16px;padding:16px;margin-bottom:12px}
 .info-card-hdr{display:flex;align-items:center;gap:8px;margin-bottom:14px}
 .info-card-title{font-size:14px;font-weight:800;color:#1a1a1a}
 .info-field{margin-bottom:12px}
 .info-label{font-size:11px;font-weight:800;color:#888;letter-spacing:.5px;margin-bottom:5px;text-transform:uppercase}
 .info-val{font-size:13px;font-weight:700;color:#1a1a1a;padding:9px 12px;background:#f5f5f5;border-radius:10px;min-height:38px;cursor:pointer;border:1.5px solid transparent;transition:border-color .15s;word-break:break-all}
-.info-val:hover{border-color:#CECBF6}
-.info-val.empty{color:#bbb;font-weight:600;font-style:italic}
-.info-row{display:flex;gap:10px}
-.info-row .info-field{flex:1;min-width:0}
+.info-val:hover{border-color:#CECBF6}.info-val.empty{color:#bbb;font-weight:600;font-style:italic}
+.info-row{display:flex;gap:10px}.info-row .info-field{flex:1;min-width:0}
 .edit-inline-row{display:flex;gap:6px}
+
+/* ── 願望清單 ── */
+.wb-tabs{display:flex;gap:6px;margin-bottom:12px}
+.wb-tab{flex:1;padding:8px 4px;font-size:12px;font-weight:700;color:#666;background:#f5f5f5;border:1.5px solid #e0e0e0;cursor:pointer;border-radius:10px;transition:all .15s;font-family:'Nunito',sans-serif;text-align:center}
+.wb-tab.on-rest{background:#FFF3E8;color:#8B3A00;border-color:#FFC078}
+.wb-tab.on-stay{background:#E8F4FF;color:#0A3E6E;border-color:#78B6FF}
+.wb-tab.on-fun{background:#F0FFF4;color:#0B5E2A;border-color:#5DD67E}
+.wish-card{background:#fff;border:1.5px solid #e0e0e0;border-radius:14px;padding:12px 14px;margin-bottom:8px;cursor:grab;transition:all .15s;position:relative}
+.wish-card:hover{border-color:#9B7FE0;transform:translateY(-2px);box-shadow:0 4px 12px rgba(107,79,196,.12)}
+.wish-card.dragging{opacity:.4;transform:scale(.97)}
+.wish-badge{font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:6px}
+.wb-rest .wish-badge{background:#FFF3E8;color:#8B3A00}
+.wb-stay .wish-badge{background:#E8F4FF;color:#0A3E6E}
+.wb-fun .wish-badge{background:#F0FFF4;color:#0B5E2A}
+.wish-name{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:3px}
+.wish-addr{font-size:11px;color:#888;font-weight:600;margin-bottom:2px}
+.wish-note{font-size:11px;color:#aaa;font-weight:600}
+.wish-acts{display:flex;gap:4px;margin-top:8px}
+.wish-add-form{background:#F5F0FF;border:1.5px solid #CECBF6;border-radius:14px;padding:14px;margin-bottom:12px}
+.wish-empty{text-align:center;padding:2rem 1rem;color:#ccc;font-weight:700;font-size:13px}
+
+/* ── 拼圖行程板 ── */
+.pb-layout{display:flex;gap:12px;align-items:flex-start}
+.pb-pool{width:220px;flex-shrink:0}
+.pb-pool-title{font-size:12px;font-weight:800;color:#6C4FC4;margin-bottom:8px;padding-left:2px;letter-spacing:.3px}
+.pb-board{flex:1;min-width:0}
+.pb-day-col{background:#fff;border:1.5px solid #e0e0e0;border-radius:16px;margin-bottom:10px;overflow:hidden}
+.pb-day-hdr{padding:10px 14px;font-size:13px;font-weight:800;display:flex;align-items:center;gap:8px}
+.pb-d0 .pb-day-hdr{background:#FBEAF0;color:#72243E}
+.pb-d1 .pb-day-hdr{background:#EEEDFE;color:#3C3489}
+.pb-d2 .pb-day-hdr{background:#E1F5EE;color:#085041}
+.pb-d3 .pb-day-hdr{background:#FAEEDA;color:#633806}
+.pb-slots{min-height:60px;padding:8px}
+.pb-slot{border:2px dashed #e0e0e0;border-radius:10px;padding:6px;margin-bottom:6px;min-height:48px;transition:border-color .15s;position:relative}
+.pb-slot.drag-over{border-color:#6C4FC4;background:#F5F0FF}
+.pb-slot-time{font-size:10px;font-weight:800;color:#aaa;margin-bottom:4px;padding:0 2px}
+.pb-card{background:#fff;border:1.5px solid #e0e0e0;border-radius:10px;padding:8px 10px;cursor:grab;transition:all .15s;position:relative}
+.pb-card:hover{border-color:#9B7FE0;box-shadow:0 3px 10px rgba(107,79,196,.12)}
+.pb-card.dragging{opacity:.4}
+.pb-card-type{font-size:9px;font-weight:800;padding:1px 6px;border-radius:8px;display:inline-block;margin-bottom:4px}
+.pb-card-rest{background:#FFF3E8;color:#8B3A00}
+.pb-card-stay{background:#E8F4FF;color:#0A3E6E}
+.pb-card-fun{background:#F0FFF4;color:#0B5E2A}
+.pb-card-plan{background:#EEEDFE;color:#3C3489}
+.pb-card-name{font-size:12px;font-weight:700;color:#1a1a1a;margin-bottom:2px}
+.pb-card-time{font-size:10px;color:#888;font-weight:600}
+.pb-card-addr{font-size:10px;color:#aaa;font-weight:600}
+.pb-card-note{font-size:10px;color:#aaa;font-weight:600;margin-top:1px}
+.pb-card-del{position:absolute;top:5px;right:5px;font-size:11px;padding:2px 4px;border:none;border-radius:4px;background:transparent;color:#ccc;cursor:pointer;opacity:0;transition:opacity .15s}
+.pb-card:hover .pb-card-del{opacity:1}
+.pb-card-del:hover{color:#E24B4A;background:#FCEBEB}
+.pool-card{background:#fff;border:1.5px solid #e0e0e0;border-radius:10px;padding:8px 10px;cursor:grab;margin-bottom:6px;transition:all .15s}
+.pool-card:hover{border-color:#9B7FE0;box-shadow:0 3px 10px rgba(107,79,196,.12);transform:translateY(-1px)}
+.pool-card.dragging{opacity:.4}
+.pool-card-type{font-size:9px;font-weight:800;padding:1px 6px;border-radius:8px;display:inline-block;margin-bottom:3px}
+.pool-empty{text-align:center;padding:1.5rem .5rem;color:#ccc;font-weight:700;font-size:12px;border:2px dashed #eee;border-radius:12px}
+.pb-add-slot-btn{width:100%;font-size:11px;font-weight:700;padding:6px;border:1.5px dashed #e0e0e0;border-radius:8px;background:transparent;color:#aaa;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .15s;margin-top:2px}
+.pb-add-slot-btn:hover{border-color:#9B7FE0;color:#6C4FC4;background:#F5F0FF}
+.drag-over-inner{background:#F5F0FF;border-radius:8px;outline:2px dashed #9B7FE0}
+@media(max-width:600px){.pb-layout{flex-direction:column}.pb-pool{width:100%}}
 </style>
 </head>
 <body>
@@ -174,16 +208,14 @@ body{font-family:'Nunito',sans-serif;background:#fff5f8;min-height:100vh;padding
 <div class="app" id="app">
   <div class="loading"><span class="loading-spinner">⏳</span>連線中，請稍候…</div>
 </div>
-
 <script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getDatabase, ref, onValue, set } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+import{initializeApp}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import{getDatabase,ref,onValue,set}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+const app=initializeApp({databaseURL:'https://hk-trip-2026-40710-default-rtdb.firebaseio.com'});
+const db=getDatabase(app);
+const tripRef=ref(db,'trip');
 
-const app = initializeApp({ databaseURL: 'https://hk-trip-2026-40710-default-rtdb.firebaseio.com' });
-const db = getDatabase(app);
-const tripRef = ref(db, 'trip');
-
-const DEFAULT = {
+const DEFAULT={
   days:[
     {label:'DAY 1',name:'抵達香港',date:'12月24日・聖誕夜',dc:'d0',events:[
       {time:'抵港後',name:'辦理入境 & 購買八達通',note:'在機場服務台購買',hl:false},
@@ -242,119 +274,282 @@ const DEFAULT = {
     '衛生 & 藥品 💊':[{l:'個人藥品（腸胃藥、感冒藥）',t:'建議',c:false},{l:'防曬乳',t:'建議',c:false},{l:'保濕 & 護唇膏（冬天乾燥）',t:'選配',c:false},{l:'口罩',t:'建議',c:false}],
     '迪士尼裝備 🏰':[{l:'迪士尼電子門票',t:'必備',c:false},{l:'舒適小背包',t:'建議',c:false},{l:'保溫瓶（樂園飲料好貴）',t:'選配',c:false},{l:'零食補充',t:'選配',c:false}]
   },
-  info:{flight_out_date:'',flight_out_num:'',flight_out_dep:'',flight_out_arr:'',flight_ret_date:'',flight_ret_num:'',flight_ret_dep:'',flight_ret_arr:'',hotel_name:'',hotel_addr:'',hotel_checkin:'',hotel_checkout:'',hotel_phone:'',budget:'',currency_rate:'',sim:'',other:''}
+  info:{flight_out_date:'',flight_out_num:'',flight_out_dep:'',flight_out_arr:'',flight_ret_date:'',flight_ret_num:'',flight_ret_dep:'',flight_ret_arr:'',hotel_name:'',hotel_addr:'',hotel_checkin:'',hotel_checkout:'',hotel_phone:'',budget:'',currency_rate:'',sim:'',other:''},
+  wishlist:{rest:[],stay:[],fun:[]},
+  puzzle:{
+    slots:[
+      {dayIdx:0,time:'抵港後',label:'抵港後',cards:[]},{dayIdx:0,time:'下午',label:'下午',cards:[]},{dayIdx:0,time:'傍晚',label:'傍晚',cards:[]},{dayIdx:0,time:'晚上',label:'晚上',cards:[]},
+      {dayIdx:1,time:'早上',label:'早上',cards:[]},{dayIdx:1,time:'中午',label:'中午',cards:[]},{dayIdx:1,time:'下午',label:'下午',cards:[]},{dayIdx:1,time:'16:00',label:'16:00',cards:[]},{dayIdx:1,time:'晚上',label:'晚上',cards:[]},
+      {dayIdx:2,time:'早上',label:'早上',cards:[]},{dayIdx:2,time:'上午',label:'上午',cards:[]},{dayIdx:2,time:'下午',label:'下午',cards:[]},
+      {dayIdx:3,time:'早上',label:'早上',cards:[]},{dayIdx:3,time:'機場',label:'機場',cards:[]},{dayIdx:3,time:'返台',label:'返台',cards:[]}
+    ]
+  }
 };
 
 const TIMES=['早上','上午','中午','下午','傍晚','晚上'];
 function timeOpts(){let h='<option value="">選擇時間</option>';TIMES.forEach(t=>h+=`<option value="${t}">${t}</option>`);h+='<optgroup label="── 指定時間 ──">';for(let i=0;i<24;i++){['00','30'].forEach(m=>{const v=String(i).padStart(2,'0')+':'+m;h+=`<option value="${v}">${v}</option>`;});}h+='</optgroup>';return h;}
 const TIME_HTML=timeOpts();
+function slotTimeForm(selectId){
+  return`<select class="sel" id="${selectId}" style="width:100%;margin-bottom:5px" onchange="if(this.value)document.getElementById('c-${selectId}').value=''">${TIME_HTML}</select><input class="inp" id="c-${selectId}" placeholder="或自訂（例：抵港後、登機前）" style="font-size:12px;margin-bottom:6px" oninput="if(this.value)document.getElementById('${selectId}').value=''">`;
+}
+function getSlotVal(selectId){
+  const c=document.getElementById('c-'+selectId);
+  if(c&&c.value.trim())return c.value.trim();
+  const s=document.getElementById(selectId);
+  return s?s.value:'';
+}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-const UI={tab:'itinerary',openDays:{1:true},editEvt:null,addForm:{},editItem:null,editInfo:null,syncStatus:'ok',showTipAdd:false,editTip:null};
+const UI={tab:'wishboard',openDays:{1:true},editEvt:null,addForm:{},editItem:null,editInfo:null,syncStatus:'ok',showTipAdd:false,editTip:null,wbCat:'rest',showWishAdd:false,dragSrc:null,dragType:null,poolOpen:{},addSlotDay:null,editSlotTime:null,insertBefore:null,editCardTime:null};
 let D=null,saveTimer=null;
 
-function saveToFirebase(){
-  UI.syncStatus='saving';renderSyncBar();clearTimeout(saveTimer);
-  saveTimer=setTimeout(()=>{
-    set(tripRef,D).then(()=>{UI.syncStatus='ok';renderSyncBar();}).catch(()=>{UI.syncStatus='err';renderSyncBar();});
-  },600);
+function save(){
+  UI.syncStatus='saving';renderSync();clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>{set(tripRef,D).then(()=>{UI.syncStatus='ok';renderSync();}).catch(()=>{UI.syncStatus='err';renderSync();});},700);
 }
-function renderSyncBar(){
-  const el=document.getElementById('sync-bar');if(!el)return;
-  const labels={ok:'已同步 ☁️',saving:'儲存中…',err:'同步失敗，請檢查網路'};
-  el.className='sync-bar '+UI.syncStatus;
-  el.innerHTML=`<div class="sync-dot"></div>${labels[UI.syncStatus]}`;
+function renderSync(){const el=document.getElementById('sync-bar');if(!el)return;const L={ok:'已同步 ☁️',saving:'儲存中…',err:'同步失敗'};el.className='sync-bar '+UI.syncStatus;el.innerHTML=`<div class="sync-dot"></div>${L[UI.syncStatus]}`;}
+
+function iField(key,label,ph){
+  const v=(D.info&&D.info[key])||'';const isE=UI.editInfo===key;
+  if(isE)return`<div class="info-field"><div class="info-label">${label}</div><div class="edit-inline-row"><input class="inp" id="if-${key}" value="${esc(v)}" placeholder="${ph}" onkeydown="if(event.key==='Enter')window.saveInfo('${key}')" style="flex:1"><button class="btn btn-am" style="font-size:11px;padding:5px 10px;white-space:nowrap" onclick="window.saveInfo('${key}')">存</button></div></div>`;
+  return`<div class="info-field"><div class="info-label">${label}</div><div class="info-val ${v?'':'empty'}" onclick="window.editInfo('${key}')">${v?esc(v):ph}</div></div>`;
 }
 
-function iField(key,label,placeholder){
-  const v=(D.info&&D.info[key])||'';const isEdit=UI.editInfo===key;
-  if(isEdit)return`<div class="info-field"><div class="info-label">${label}</div><div class="edit-inline-row"><input class="inp" id="if-${key}" value="${esc(v)}" placeholder="${placeholder}" onkeydown="if(event.key==='Enter')window.saveInfo('${key}')" style="flex:1"><button class="btn btn-am" style="font-size:11px;padding:5px 10px;white-space:nowrap" onclick="window.saveInfo('${key}')">存</button></div></div>`;
-  return`<div class="info-field"><div class="info-label">${label}</div><div class="info-val ${v?'':'empty'}" onclick="window.editInfo('${key}')">${v?esc(v):placeholder}</div></div>`;
-}
+const WCAT={rest:{label:'🍽 餐廳',badge:'餐廳',cls:'wb-rest',pcls:'pb-card-rest'},stay:{label:'🏨 住宿',badge:'住宿',cls:'wb-stay',pcls:'pb-card-stay'},fun:{label:'🎡 娛樂',badge:'娛樂',cls:'wb-fun',pcls:'pb-card-fun'}};
+const DAY_DC=['d0','d1','d2','d3'];
 
 function render(){
   if(!D)return;
   const a=document.getElementById('app');
-  let h=`<div class="banner"><div class="banner-deco" id="bdeco"></div><div class="banner-trees">🎄✨🏰✨🎄</div><h1>香港聖誕之旅 ✨</h1><p>12月24日 — 12月27日 · 2026</p></div>`;
-  h+=`<div id="sync-bar" class="sync-bar ${UI.syncStatus}"><div class="sync-dot"></div>${UI.syncStatus==='ok'?'已同步 ☁️':UI.syncStatus==='saving'?'儲存中…':'同步失敗，請檢查網路'}</div>`;
-  h+='<div class="tabs">';
-  [['itinerary','🗓 行程','on-it'],['tips','📋 注意事項','on-tp'],['luggage','🧳 行李','on-lg'],['info','✈ 資訊','on-in']].forEach(([id,lbl,cls])=>{
-    h+=`<button class="tab ${UI.tab===id?cls:''}" onclick="window.setTab('${id}')">${lbl}</button>`;
-  });
-  h+='</div>';
+  let h=`<div class="banner"><div class="banner-trees">🎄✨🏰✨🎄</div><h1>香港聖誕之旅 ✨</h1><p>12月24日 — 12月27日 · 2026</p></div>`;
+  h+=`<div id="sync-bar" class="sync-bar ${UI.syncStatus}"><div class="sync-dot"></div>${UI.syncStatus==='ok'?'已同步 ☁️':UI.syncStatus==='saving'?'儲存中…':'同步失敗'}</div>`;
+  const TABS=[['wishboard','💝 願望清單','on-wb'],['puzzle','🧩 拼圖行程','on-pb'],['tips','📋 注意事項','on-tp'],['luggage','🧳 行李','on-lg'],['info','✈ 資訊','on-in']];
+  h+='<div class="tabs">';TABS.forEach(([id,lbl,cls])=>h+=`<button class="tab ${UI.tab===id?cls:''}" onclick="window.setTab('${id}')">${lbl}</button>`);h+='</div>';
 
-  if(UI.tab==='itinerary'){
+  /* ── 願望清單 ── */
+  if(UI.tab==='wishboard'){
     h+='<div>';
-    D.days.forEach((day,di)=>{
-      const op=!!UI.openDays[di];
-      h+=`<div class="day-card ${day.dc}"><div class="day-h" onclick="window.togDay(${di})"><div style="display:flex;align-items:center"><span class="day-badge">${day.label}</span><div><div class="day-name">${day.name}</div><div class="day-date">${day.date}</div></div></div><span class="chev" style="transform:rotate(${op?180:0}deg)">▼</span></div><div class="day-body ${op?'open':''}"><div class="tl">`;
-      day.events.forEach((ev,ei)=>{
-        const isEdit=UI.editEvt===di+'-'+ei;
-        h+=`<div class="evt"><div class="evt-dot ${ev.hl?'hl':''}"></div>`;
-        if(isEdit){h+=`<div class="edit-form"><div style="display:flex;gap:6px;margin-bottom:7px"><select class="sel" id="ed-time" style="width:120px">${TIME_HTML}</select><input class="inp" id="ed-name" value="${esc(ev.name)}" placeholder="行程名稱"></div><input class="inp" id="ed-note" value="${esc(ev.note)}" placeholder="備註（可留空）" style="margin-bottom:8px"><div style="display:flex;gap:6px;align-items:center"><button class="btn btn-pr" style="font-size:11px;padding:5px 14px" onclick="window.saveEvt(${di},${ei})">儲存</button><button class="btn" style="font-size:11px;padding:5px 14px" onclick="window.cancelEdit()">取消</button><button class="btn btn-danger" style="font-size:11px;padding:5px 10px;margin-left:auto" onclick="window.delEvt(${di},${ei})">刪除</button></div></div>`;}
-        else{h+=`<div class="evt-row"><div style="flex:1"><div class="evt-time">${esc(ev.time)}</div><div class="evt-name">${esc(ev.name)}</div>${ev.note?'<div class="evt-note">'+esc(ev.note)+'</div>':''}</div><div class="evt-acts"><button class="sb" onclick="window.editEvt(${di},${ei})">✏️</button><button class="sb" onclick="window.delEvt(${di},${ei})">🗑️</button></div></div>`;}
-        h+='</div>';
+    h+='<div class="wb-tabs">';
+    Object.entries(WCAT).forEach(([k,v])=>h+=`<button class="wb-tab ${UI.wbCat===k?'on-'+k:''}" onclick="window.setWbCat('${k}')">${v.label} <span style="background:#e0e0e0;border-radius:10px;padding:1px 6px;font-size:10px">${(D.wishlist[k]||[]).length}</span></button>`);
+    h+='</div>';
+    const cat=UI.wbCat;const wc=WCAT[cat];
+    if(UI.showWishAdd){
+      h+=`<div class="wish-add-form"><div style="font-size:12px;font-weight:800;color:#6C4FC4;margin-bottom:8px">新增 ${wc.label}</div>
+        <input class="inp" id="w-name" placeholder="名稱" style="margin-bottom:7px">
+        <input class="inp" id="w-addr" placeholder="地址（可留空）" style="margin-bottom:7px">
+        <input class="inp" id="w-note" placeholder="備註（可留空）" style="margin-bottom:8px">
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-vl" style="font-size:11px;padding:6px 14px" onclick="window.addWish()">新增</button>
+          <button class="btn" style="font-size:11px;padding:6px 14px" onclick="window.togWishAdd()">取消</button>
+        </div></div>`;
+    } else {
+      h+=`<button style="width:100%;text-align:center;font-size:13px;font-weight:700;padding:10px;border-radius:12px;border:1.5px dashed #CECBF6;cursor:pointer;font-family:'Nunito',sans-serif;background:#F5F0FF;color:#6C4FC4;margin-bottom:12px;transition:all .15s" onclick="window.togWishAdd()">+ 新增 ${wc.label}</button>`;
+    }
+    const items=D.wishlist[cat]||[];
+    if(items.length===0){h+=`<div class="wish-empty">還沒有 ${wc.label} 清單<br>點上方新增第一個吧！✨</div>`;}
+    else{
+      items.forEach((w,wi)=>{
+        h+=`<div class="wish-card ${wc.cls}" draggable="true" ondragstart="window.onWishDragStart(event,'${cat}',${wi})" ondragend="window.onDragEnd(event)">
+          <div class="wish-badge">${wc.badge}</div>
+          <div class="wish-name">${esc(w.name)}</div>
+          ${w.addr?'<div class="wish-addr">📍 '+esc(w.addr)+'</div>':''}
+          ${w.note?'<div class="wish-note">💬 '+esc(w.note)+'</div>':''}
+          <div class="wish-acts">
+            <button class="btn btn-danger" style="font-size:10px;padding:4px 8px" onclick="window.delWish('${cat}',${wi})">刪除</button>
+          </div></div>`;
       });
-      h+='</div>';
-      if(UI.addForm[di]){h+=`<div class="add-form"><div class="add-form-label">新增行程</div><div style="display:flex;gap:6px;margin-bottom:7px"><select class="sel" id="add-time-${di}" style="width:120px">${TIME_HTML}</select><input class="inp" id="add-name-${di}" placeholder="行程名稱"></div><input class="inp" id="add-note-${di}" placeholder="備註（可留空）" style="margin-bottom:8px"><div style="display:flex;gap:6px"><button class="btn ${di===0?'btn-pk':di===1?'btn-pr':di===2?'btn-tl':'btn-am'}" style="font-size:11px;padding:6px 14px" onclick="window.addEvt(${di})">加入行程</button><button class="btn" style="font-size:11px;padding:6px 14px" onclick="window.togAdd(${di})">取消</button></div></div>`;}
-      else{h+=`<button class="btn add-btn-full" onclick="window.togAdd(${di})">+ 新增行程</button>`;}
-      h+='</div></div>';
-    });
+    }
     h+='</div>';
   }
 
+  /* ── 拼圖行程板 ── */
+  if(UI.tab==='puzzle'){
+    if(!D.puzzle)D.puzzle={slots:JSON.parse(JSON.stringify(DEFAULT.puzzle.slots))};
+    if(!UI.poolOpen)UI.poolOpen={};
+    h+=`<p style="font-size:12px;color:#888;font-weight:600;margin-bottom:10px">💡 展開左側卡片池，把卡片拖拉到右側時間格排入行程</p>`;
+    h+='<div class="pb-layout">';
+
+    // ── 卡片池（可折疊分組）──
+    h+=`<div class="pb-pool"><div class="pb-pool-title">🃏 卡片池</div>`;
+
+    // group 1: day events (split by day)
+    D.days.forEach((day,di)=>{
+      if(!day.events||day.events.length===0)return;
+      const gKey='day-'+di;
+      const isOpen=!!UI.poolOpen[gKey];
+      h+=`<div style="background:#EEEDFE;border:1.5px solid #CECBF6;border-radius:10px;margin-bottom:6px;overflow:hidden">
+        <div onclick="window.togPool('${gKey}')" style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;cursor:pointer">
+          <span style="font-size:11px;font-weight:800;color:#3C3489">📅 ${day.label}・${day.name}</span>
+          <span style="font-size:10px;color:#7F77DD;transform:rotate(${isOpen?180:0}deg);display:inline-block;transition:transform .2s">▼</span>
+        </div>`;
+      if(isOpen){
+        day.events.forEach((ev,ei)=>{
+          const cardData=esc(JSON.stringify({type:'plan',name:ev.name,time:ev.time,addr:'',note:ev.note||'',dayLabel:day.label}));
+          h+=`<div style="padding:0 8px 8px">
+            <div class="pool-card" style="border-color:#CECBF6;margin-bottom:4px" draggable="true" ondragstart="window.onPoolDragStart(event,'${cardData}')" ondragend="window.onDragEnd(event)">
+              <div class="pool-card-type pb-card-plan">📅 ${esc(day.label)}</div>
+              <div style="font-size:12px;font-weight:700;color:#1a1a1a">${esc(ev.name)}</div>
+              <div style="font-size:10px;color:#888;font-weight:600">⏰ ${esc(ev.time)}</div>
+              ${ev.note?'<div style="font-size:10px;color:#aaa;font-weight:600">💬 '+esc(ev.note)+'</div>':''}
+            </div></div>`;
+        });
+      }
+      h+='</div>';
+    });
+
+    // group 2: wishlist by cat
+    Object.entries(WCAT).forEach(([cat,wc])=>{
+      const items=D.wishlist[cat]||[];
+      if(items.length===0)return;
+      const gKey='wish-'+cat;
+      const isOpen=!!UI.poolOpen[gKey];
+      const bgMap={rest:'#FFF3E8',stay:'#E8F4FF',fun:'#F0FFF4'};
+      const bdMap={rest:'#FFC078',stay:'#78B6FF',fun:'#5DD67E'};
+      const txMap={rest:'#8B3A00',stay:'#0A3E6E',fun:'#0B5E2A'};
+      h+=`<div style="background:${bgMap[cat]};border:1.5px solid ${bdMap[cat]};border-radius:10px;margin-bottom:6px;overflow:hidden">
+        <div onclick="window.togPool('${gKey}')" style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;cursor:pointer">
+          <span style="font-size:11px;font-weight:800;color:${txMap[cat]}">${wc.label} <span style="background:rgba(0,0,0,.08);border-radius:8px;padding:1px 6px;font-size:10px">${items.length}</span></span>
+          <span style="font-size:10px;color:${txMap[cat]};transform:rotate(${isOpen?180:0}deg);display:inline-block;transition:transform .2s">▼</span>
+        </div>`;
+      if(isOpen){
+        items.forEach((w,wi)=>{
+          h+=`<div style="padding:0 8px 8px">
+            <div class="pool-card ${wc.cls}" style="margin-bottom:4px" draggable="true" ondragstart="window.onWishDragStart(event,'${cat}',${wi})" ondragend="window.onDragEnd(event)">
+              <div class="pool-card-type ${wc.pcls}">${wc.badge}</div>
+              <div style="font-size:12px;font-weight:700;color:#1a1a1a">${esc(w.name)}</div>
+              ${w.addr?'<div style="font-size:10px;color:#888;font-weight:600">📍 '+esc(w.addr)+'</div>':''}
+              ${w.note?'<div style="font-size:10px;color:#aaa;font-weight:600">💬 '+esc(w.note)+'</div>':''}
+            </div></div>`;
+        });
+      }
+      h+='</div>';
+    });
+
+    h+='</div>';
+
+    // ── 行程板 ──
+    h+='<div class="pb-board">';
+    D.days.forEach((day,di)=>{
+      const dc=DAY_DC[di];
+      const daySlots=D.puzzle.slots.filter(s=>s.dayIdx===di);
+      const dcColors={d0:{bg:'#FBEAF0',bd:'#F4C0D1',tx:'#72243E',dot:'#D4537E'},d1:{bg:'#EEEDFE',bd:'#CECBF6',tx:'#3C3489',dot:'#7F77DD'},d2:{bg:'#E1F5EE',bd:'#9FE1CB',tx:'#085041',dot:'#1D9E75'},d3:{bg:'#FAEEDA',bd:'#FAC775',tx:'#633806',dot:'#BA7517'}};
+      const col=dcColors[dc]||dcColors.d0;
+
+      h+=`<div class="pb-day-col pb-${dc}"><div class="pb-day-hdr"><span>${day.label}</span><span style="font-size:11px;font-weight:600;opacity:.7">${day.date}</span></div><div class="pb-slots">`;
+
+      daySlots.forEach((slot,localSi)=>{
+        const slotIdx=D.puzzle.slots.indexOf(slot);
+        const isEditTime=UI.editSlotTime===slotIdx;
+
+        // ── 大標題（時間段）──
+        h+=`<div style="margin-bottom:8px">`;
+
+        // 時間段標題列
+        if(isEditTime){
+          h+=`<div style="background:${col.bg};border:1.5px solid ${col.bd};border-radius:12px;padding:10px 12px;margin-bottom:4px">
+            <div style="font-size:12px;font-weight:800;color:${col.tx};margin-bottom:8px">⏰ ${esc(slot.label||slot.time)}</div>
+            ${slotTimeForm('et-'+slotIdx)}
+            <div style="display:flex;gap:6px">
+              <button onclick="window.saveSlotTime(${slotIdx})" style="font-size:11px;padding:5px 12px;background:${col.dot};color:white;border:none;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;flex:1">存</button>
+              <button onclick="window.cancelSlotTimeEdit()" style="font-size:11px;padding:5px 10px;background:transparent;border:1.5px solid #e0e0e0;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:600">取消</button>
+            </div></div>`;
+        } else {
+          h+=`<div style="background:${col.bg};border:1.5px solid ${col.bd};border-radius:12px;padding:9px 12px;margin-bottom:4px;display:flex;align-items:center;gap:6px">
+            <span style="font-size:13px;font-weight:800;color:${col.tx};flex:1">⏰ ${esc(slot.label||slot.time)}${slot.exactTime?'<span style="font-weight:600;opacity:.7;margin-left:4px">・'+esc(slot.exactTime)+'</span>':''}</span>
+            <button onclick="window.editSlotTime(${slotIdx})" style="font-size:10px;padding:3px 8px;background:white;border:1px solid ${col.bd};border-radius:6px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;color:${col.tx};white-space:nowrap">${slot.exactTime?'✏️ 時間':'＋ 時間'}</button>
+          </div>`;
+        }
+
+        // ── 小卡片（縮排在大標題下面）──
+        const cards=slot.cards||[];
+        const dropZone=`<div style="margin-left:16px;border-left:2px solid ${col.bd};padding-left:10px" ondragover="event.preventDefault();this.classList.add('drag-over-inner')" ondragleave="this.classList.remove('drag-over-inner')" ondrop="window.onSlotDrop(event,${slotIdx})" id="dropzone-${slotIdx}">`;
+        h+=dropZone;
+        if(cards.length===0){
+          h+=`<div style="font-size:11px;color:#ccc;font-weight:600;padding:6px 4px;font-style:italic">拖拉卡片到這裡 ✦</div>`;
+        } else {
+          cards.forEach((card,ci)=>{
+            const typeInfo=WCAT[card.type]?{label:WCAT[card.type].badge,cls:WCAT[card.type].pcls}:{label:'📅 行程',cls:'pb-card-plan'};
+            const cardJson=esc(JSON.stringify({slotIdx,ci}));
+            const isEditCardTime=UI.editCardTime===slotIdx+'-'+ci;
+            h+=`<div class="pb-card" style="margin-bottom:5px;padding:7px 10px;cursor:grab" draggable="true" ondragstart="window.onCardDragStart(event,${slotIdx},${ci})" ondragend="window.onDragEnd(event)">
+              <div style="display:flex;align-items:center;gap:4px;margin-bottom:4px">
+                <span class="pb-card-type ${typeInfo.cls}" style="font-size:9px">${typeInfo.label}</span>
+                <span style="flex:1"></span>
+                <button onclick="window.returnCard(${slotIdx},${ci})" style="font-size:10px;padding:2px 7px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:5px;cursor:pointer;color:#888;font-family:'Nunito',sans-serif;font-weight:700" title="退回卡片池">↩ 退回</button>
+              </div>
+              <div class="pb-card-name">${esc(card.name)}</div>
+              ${card.addr?'<div class="pb-card-addr">📍 '+esc(card.addr)+'</div>':''}
+              ${card.note?'<div class="pb-card-note">💬 '+esc(card.note)+'</div>':''}`;
+            // 卡片時間編輯
+            if(isEditCardTime){
+              h+=`<div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+                ${slotTimeForm('ct-'+slotIdx+'-'+ci)}
+                <div style="display:flex;gap:4px">
+                  <button onclick="window.saveCardTime(${slotIdx},${ci})" style="font-size:10px;padding:3px 10px;background:#6C4FC4;color:white;border:none;border-radius:6px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;flex:1">存</button>
+                  <button onclick="window.cancelCardTime()" style="font-size:10px;padding:3px 8px;background:transparent;border:1px solid #ddd;border-radius:6px;cursor:pointer;font-family:'Nunito',sans-serif">取消</button>
+                </div></div>`;
+            } else {
+              h+=`<div style="margin-top:4px;display:flex;align-items:center;gap:4px">
+                ${card.cardTime?'<span class="pb-card-time">⏰ '+esc(card.cardTime)+'</span>':''}
+                <button onclick="window.editCardTime(${slotIdx},${ci})" style="font-size:10px;padding:2px 7px;background:transparent;border:1px solid #e8e8e8;border-radius:5px;cursor:pointer;color:#aaa;font-family:'Nunito',sans-serif;font-weight:700">${card.cardTime?'✏️ 時間':'＋ 時間'}</button>
+              </div>`;
+            }
+            h+=`</div>`; // end pb-card
+          });
+        }
+        h+=`</div>`; // end dropzone
+        h+=`</div>`; // end slot group
+      });
+
+      // ── 新增時間段 ──
+      if(UI.addSlotDay===di){
+        h+=`<div style="background:#F5F0FF;border:1.5px solid #CECBF6;border-radius:12px;padding:12px;margin-top:4px">
+          <div style="font-size:11px;font-weight:800;color:#6C4FC4;margin-bottom:8px">新增時間段</div>
+          ${slotTimeForm('ns-time-'+di)}
+          <div style="display:flex;gap:6px">
+            <button class="btn btn-vl" style="font-size:11px;padding:5px 12px;flex:1" onclick="window.addPbSlot(${di})">新增</button>
+            <button class="btn" style="font-size:11px;padding:5px 12px" onclick="window.cancelAddSlot()">取消</button>
+          </div></div>`;
+      } else {
+        h+=`<button class="pb-add-slot-btn" onclick="window.showAddSlot(${di})">+ 新增時間段</button>`;
+      }
+      h+='</div></div>';
+    });
+    h+='</div></div>';
+  }
+
+  /* ── 注意事項 ── */
   if(UI.tab==='tips'){
-    // add new tip form
     if(UI.showTipAdd){
-      h+=`<div class="tip-add-form"><div class="tip-add-label">新增注意事項</div>
-        <div style="display:flex;gap:6px;margin-bottom:7px">
-          <input class="inp" id="tip-icon" value="💡" style="width:56px;flex:none;text-align:center">
-          <input class="inp" id="tip-title" placeholder="標題">
-        </div>
+      h+=`<div class="tip-add-form"><div style="font-size:12px;font-weight:800;color:#3C3489;margin-bottom:8px">新增注意事項</div>
+        <div style="display:flex;gap:6px;margin-bottom:7px"><input class="inp" id="tip-icon" value="💡" style="width:56px;flex:none;text-align:center"><input class="inp" id="tip-title" placeholder="標題"></div>
         <input class="inp" id="tip-cat-in" placeholder="分類（例：🍜 美食推薦）" style="margin-bottom:7px">
         <textarea class="inp" id="tip-desc" placeholder="說明內容" rows="3" style="resize:vertical;margin-bottom:8px"></textarea>
-        <div style="display:flex;gap:6px">
-          <button class="btn btn-pr" style="font-size:11px;padding:6px 14px" onclick="window.addTip()">新增</button>
-          <button class="btn" style="font-size:11px;padding:6px 14px" onclick="window.togTipAdd()">取消</button>
-        </div></div>`;
+        <div style="display:flex;gap:6px"><button class="btn btn-pr" style="font-size:11px;padding:6px 14px" onclick="window.addTip()">新增</button><button class="btn" style="font-size:11px;padding:6px 14px" onclick="window.togTipAdd()">取消</button></div></div>`;
     } else {
       h+=`<button class="tip-add-btn" onclick="window.togTipAdd()">+ 新增注意事項</button>`;
     }
-
     D.tips.forEach((grp,gi)=>{
       h+=`<div class="tip-grp"><div class="tip-cat">${grp.cat}</div>`;
       grp.items.forEach((t,ti)=>{
-        const isEdit=UI.editTip===gi+'-'+ti;
-        if(isEdit){
-          h+=`<div class="tip-add-form" style="margin-bottom:7px"><div class="tip-add-label">編輯</div>
-            <div style="display:flex;gap:6px;margin-bottom:7px">
-              <input class="inp" id="etip-icon" value="${esc(t.i)}" style="width:56px;flex:none;text-align:center">
-              <input class="inp" id="etip-title" value="${esc(t.t)}" placeholder="標題">
-            </div>
-            <textarea class="inp" id="etip-desc" rows="3" style="resize:vertical;margin-bottom:8px">${esc(t.d)}</textarea>
-            <div style="display:flex;gap:6px">
-              <button class="btn btn-pr" style="font-size:11px;padding:6px 14px" onclick="window.saveTip(${gi},${ti})">儲存</button>
-              <button class="btn" style="font-size:11px;padding:6px 14px" onclick="window.cancelTipEdit()">取消</button>
-              <button class="btn btn-danger" style="font-size:11px;margin-left:auto" onclick="window.delTip(${gi},${ti})">刪除</button>
-            </div></div>`;
-        } else {
-          const warnCls=t.warn?'tip-warning':'tip';
-          h+=`<div class="${warnCls}"><span class="tip-i">${t.i}</span><div style="flex:1"><div class="tip-t">${esc(t.t)}</div><div class="tip-d">${esc(t.d)}</div></div><div class="tip-acts"><button class="sb" onclick="window.editTip(${gi},${ti})">✏️</button><button class="sb" onclick="window.delTip(${gi},${ti})">🗑️</button></div></div>`;
-        }
+        const isE=UI.editTip===gi+'-'+ti;
+        if(isE){h+=`<div class="tip-add-form" style="margin-bottom:7px"><div style="font-size:12px;font-weight:800;color:#3C3489;margin-bottom:8px">編輯</div><div style="display:flex;gap:6px;margin-bottom:7px"><input class="inp" id="etip-icon" value="${esc(t.i)}" style="width:56px;flex:none;text-align:center"><input class="inp" id="etip-title" value="${esc(t.t)}" placeholder="標題"></div><textarea class="inp" id="etip-desc" rows="3" style="resize:vertical;margin-bottom:8px">${esc(t.d)}</textarea><div style="display:flex;gap:6px"><button class="btn btn-pr" style="font-size:11px;padding:6px 14px" onclick="window.saveTip(${gi},${ti})">儲存</button><button class="btn" style="font-size:11px;padding:6px 14px" onclick="window.cancelTipEdit()">取消</button><button class="btn btn-danger" style="font-size:11px;margin-left:auto" onclick="window.delTip(${gi},${ti})">刪除</button></div></div>`;}
+        else{const wc=t.warn?'tip-warning':'tip';h+=`<div class="${wc}"><span class="tip-i">${t.i}</span><div style="flex:1"><div class="tip-t">${esc(t.t)}</div><div class="tip-d">${esc(t.d)}</div></div><div class="tip-acts"><button class="sb" onclick="window.editTip(${gi},${ti})">✏️</button><button class="sb" onclick="window.delTip(${gi},${ti})">🗑️</button></div></div>`;}
       });
       h+='</div>';
     });
   }
 
+  /* ── 行李 ── */
   if(UI.tab==='luggage'){
     const all=Object.values(D.luggage).flat();const total=all.length,done=all.filter(i=>i.c).length,pct=total?Math.round(done/total*100):0;
     h+=`<div class="prog-lbl"><span>行李打包進度</span><span class="prog-pct">${done}/${total} 項 · ${pct}%</span></div><div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div>`;
     Object.entries(D.luggage).forEach(([cat,items])=>{
       h+=`<div class="lug-sec"><div class="lug-cat">${cat}</div>`;
       items.forEach((it,idx)=>{
-        const isEdit=UI.editItem===cat+'-'+idx;const tc=it.t==='必備'?'tag-r':it.t==='建議'?'tag-b':'tag-g';
+        const isE=UI.editItem===cat+'-'+idx;const tc=it.t==='必備'?'tag-r':it.t==='建議'?'tag-b':'tag-g';
         h+=`<div class="item ${it.c?'chk':''}">`;
-        if(isEdit){h+=`<div style="display:flex;gap:6px;flex:1;align-items:center"><input class="inp" id="ei-label" value="${esc(it.l)}" style="flex:1"><button class="btn btn-pk" style="font-size:11px;padding:5px 10px" onclick="window.saveItem('${esc(cat)}',${idx})">存</button><button class="btn" style="font-size:11px;padding:5px 10px" onclick="window.cancelItemEdit()">取消</button></div>`;}
+        if(isE){h+=`<div style="display:flex;gap:6px;flex:1;align-items:center"><input class="inp" id="ei-label" value="${esc(it.l)}" style="flex:1"><button class="btn btn-pk" style="font-size:11px;padding:5px 10px" onclick="window.saveItem('${esc(cat)}',${idx})">存</button><button class="btn" style="font-size:11px;padding:5px 10px" onclick="window.cancelItemEdit()">取消</button></div>`;}
         else{h+=`<div class="cb" onclick="window.togItem('${esc(cat)}',${idx})"><span class="cm">✓</span></div><span class="il" onclick="window.togItem('${esc(cat)}',${idx})">${esc(it.l)}</span>${it.t?'<span class="tag '+tc+'">'+it.t+'</span>':''}<div class="item-acts"><button class="sb" onclick="window.editItem('${esc(cat)}',${idx})">✏️</button><button class="sb" onclick="window.delItem('${esc(cat)}',${idx})">🗑️</button></div>`;}
         h+='</div>';
       });h+='</div>';
@@ -362,6 +557,7 @@ function render(){
     h+=`<div style="display:flex;gap:8px;margin-top:10px"><input class="inp" id="new-item" placeholder="新增自訂物品..." onkeydown="if(event.key==='Enter')window.addItem()" style="flex:1"><button class="btn btn-pk" onclick="window.addItem()">+ 新增</button></div>`;
   }
 
+  /* ── 旅遊資訊 ── */
   if(UI.tab==='info'){
     h+=`<div class="info-card"><div class="info-card-hdr"><span style="font-size:18px">✈</span><div class="info-card-title">去程航班</div></div><div class="info-row">${iField('flight_out_date','日期','12月24日')}${iField('flight_out_num','航班號','例：CI916')}</div><div class="info-row">${iField('flight_out_dep','出發時間','例：08:30')}${iField('flight_out_arr','抵達時間','例：10:30')}</div></div>`;
     h+=`<div class="info-card"><div class="info-card-hdr"><span style="font-size:18px">🛬</span><div class="info-card-title">回程航班</div></div><div class="info-row">${iField('flight_ret_date','日期','12月27日')}${iField('flight_ret_num','航班號','例：CI917')}</div><div class="info-row">${iField('flight_ret_dep','出發時間','例：14:00')}${iField('flight_ret_arr','抵達時間','例：16:00')}</div></div>`;
@@ -371,97 +567,150 @@ function render(){
   }
 
   a.innerHTML=h;
-
   if(UI.editEvt!==null){const el=document.getElementById('ed-time');if(el){const[di,ei]=UI.editEvt.split('-').map(Number);const cur=D.days[di].events[ei].time;let found=false;for(let o of el.options)if(o.value===cur){found=true;break;}if(!found){const opt=document.createElement('option');opt.value=cur;opt.text=cur;el.insertBefore(opt,el.options[1]);}el.value=cur;}}
-
-  // banner sparkles
-  const bd=document.getElementById('bdeco');
-  if(bd){for(let i=0;i<12;i++){const s=document.createElement('div');s.style.cssText=`position:absolute;width:${Math.random()*5+2}px;height:${Math.random()*5+2}px;border-radius:50%;background:${['#D4537E','#7F77DD','#1D9E75','#FAC775'][Math.floor(Math.random()*4)]};left:${Math.random()*100}%;top:${Math.random()*100}%;opacity:${Math.random()*.3+.05}`;bd.appendChild(s);}}
 }
 
-// ── Christmas decorations ──
+/* xmas */
 function initXmas(){
   const bg=document.getElementById('xmas-bg');
-  const snowflakes=['❄','❅','❆','✦','✧','⭐','🌟'];
-  for(let i=0;i<22;i++){
-    const el=document.createElement('div');
-    el.className='snowflake';
-    el.textContent=snowflakes[Math.floor(Math.random()*snowflakes.length)];
-    const size=Math.random()*10+8;
-    el.style.cssText=`left:${Math.random()*100}%;font-size:${size}px;animation-duration:${Math.random()*10+8}s;animation-delay:${Math.random()*8}s;opacity:${Math.random()*.2+.05}`;
-    bg.appendChild(el);
-  }
-  const lightsEl=document.getElementById('lights');
-  const colors=['#E24B4A','#1D9E75','#FAC775','#7F77DD','#D4537E'];
-  let lh='';
-  for(let i=0;i<30;i++){
-    const c=colors[i%colors.length];
-    lh+=`<div class="bulb" style="background:${c};animation-delay:${(i*0.12).toFixed(2)}s"></div>`;
-    if(i<29)lh+=`<div class="light-wire"></div>`;
-  }
-  lightsEl.innerHTML=lh;
+  ['❄','❅','❆','✦','✧','⭐','🌟'].forEach((s,i)=>{
+    for(let j=0;j<3;j++){const el=document.createElement('div');el.className='snowflake';el.textContent=s;const sz=Math.random()*10+8;el.style.cssText=`left:${Math.random()*100}%;font-size:${sz}px;animation-duration:${Math.random()*10+8}s;animation-delay:${Math.random()*8}s;opacity:${Math.random()*.18+.04}`;bg.appendChild(el);}
+  });
+  const lEl=document.getElementById('lights');const colors=['#E24B4A','#1D9E75','#FAC775','#7F77DD','#D4537E'];let lh='';
+  for(let i=0;i<32;i++){lh+=`<div class="bulb" style="background:${colors[i%colors.length]};animation-delay:${(i*.12).toFixed(2)}s"></div>`;if(i<31)lh+=`<div class="light-wire"></div>`;}
+  lEl.innerHTML=lh;
 }
 initXmas();
 
 onValue(tripRef,snap=>{
   const val=snap.val();
-  if(val){
-    D=val;
-    if(!D.info)D.info=Object.assign({},DEFAULT.info);
-    if(!D.tips)D.tips=DEFAULT.tips;
-  } else {
-    D=JSON.parse(JSON.stringify(DEFAULT));
-    set(tripRef,D);
-  }
+  if(val){D=val;if(!D.info)D.info={...DEFAULT.info};if(!D.tips)D.tips=DEFAULT.tips;if(!D.wishlist)D.wishlist={rest:[],stay:[],fun:[]};if(!D.puzzle)D.puzzle={slots:JSON.parse(JSON.stringify(DEFAULT.puzzle.slots))};}
+  else{D=JSON.parse(JSON.stringify(DEFAULT));set(tripRef,D);}
   render();
 });
 
+/* ── handlers ── */
 window.setTab=t=>{UI.tab=t;render()};
 window.togDay=i=>{UI.openDays[i]=!UI.openDays[i];render()};
 window.togAdd=i=>{UI.addForm[i]=!UI.addForm[i];render()};
-window.addEvt=di=>{const time=document.getElementById('add-time-'+di).value||'自訂';const name=document.getElementById('add-name-'+di).value.trim();const note=document.getElementById('add-note-'+di).value.trim();if(!name)return;D.days[di].events.push({time,name,note,hl:false});UI.addForm[di]=false;UI.openDays[di]=true;saveToFirebase();render();};
+window.addEvt=di=>{const time=document.getElementById('add-time-'+di).value||'自訂';const name=document.getElementById('add-name-'+di).value.trim();const note=document.getElementById('add-note-'+di).value.trim();if(!name)return;D.days[di].events.push({time,name,note,hl:false});UI.addForm[di]=false;UI.openDays[di]=true;save();render();};
 window.editEvt=(di,ei)=>{UI.editEvt=di+'-'+ei;render()};
 window.cancelEdit=()=>{UI.editEvt=null;render()};
-window.saveEvt=(di,ei)=>{const time=document.getElementById('ed-time').value||D.days[di].events[ei].time;const name=document.getElementById('ed-name').value.trim();const note=document.getElementById('ed-note').value.trim();if(!name)return;D.days[di].events[ei]={...D.days[di].events[ei],time,name,note};UI.editEvt=null;saveToFirebase();render();};
-window.delEvt=(di,ei)=>{D.days[di].events.splice(ei,1);UI.editEvt=null;saveToFirebase();render()};
+window.saveEvt=(di,ei)=>{const time=document.getElementById('ed-time').value||D.days[di].events[ei].time;const name=document.getElementById('ed-name').value.trim();const note=document.getElementById('ed-note').value.trim();if(!name)return;D.days[di].events[ei]={...D.days[di].events[ei],time,name,note};UI.editEvt=null;save();render();};
+window.delEvt=(di,ei)=>{D.days[di].events.splice(ei,1);UI.editEvt=null;save();render()};
+
+window.setWbCat=c=>{UI.wbCat=c;UI.showWishAdd=false;render()};
+window.togWishAdd=()=>{UI.showWishAdd=!UI.showWishAdd;render()};
+window.addWish=()=>{
+  const name=document.getElementById('w-name').value.trim();if(!name)return;
+  const addr=document.getElementById('w-addr').value.trim();const note=document.getElementById('w-note').value.trim();
+  if(!D.wishlist[UI.wbCat])D.wishlist[UI.wbCat]=[];
+  D.wishlist[UI.wbCat].push({name,addr,note});UI.showWishAdd=false;save();render();
+};
+window.delWish=(cat,idx)=>{D.wishlist[cat].splice(idx,1);save();render()};
+window.moveWishToPuzzle=(cat,idx)=>{
+  const w=D.wishlist[cat][idx];
+  if(!D.puzzle)D.puzzle={slots:JSON.parse(JSON.stringify(DEFAULT.puzzle.slots))};
+  // add to first slot of day 0 by default
+  const card={type:cat,name:w.name,addr:w.addr||'',note:w.note||'',time:''};
+  D.puzzle.slots[0].cards=D.puzzle.slots[0].cards||[];
+  D.puzzle.slots[0].cards.push(card);
+  D.wishlist[cat].splice(idx,1);
+  save();render();
+  UI.tab='puzzle';render();
+};
+
+/* drag from pool (day events) */
+window.onPoolDragStart=(e,dataStr)=>{e.dataTransfer.setData('pool',dataStr);e.currentTarget.classList.add('dragging');};
+/* drag from wishlist */
+window.onWishDragStart=(e,cat,idx)=>{e.dataTransfer.setData('wish',JSON.stringify({cat,idx}));e.currentTarget.classList.add('dragging');};
+window.onDragEnd=e=>{e.currentTarget.classList.remove('dragging');document.querySelectorAll('.drag-over').forEach(el=>el.classList.remove('drag-over'));};
+
+window.onSlotDrop=(e,slotIdx)=>{
+  e.preventDefault();e.currentTarget.classList.remove('drag-over');e.currentTarget.classList.remove('drag-over-inner');
+  if(!D.puzzle.slots[slotIdx].cards)D.puzzle.slots[slotIdx].cards=[];
+  const poolData=e.dataTransfer.getData('pool');
+  const wishData=e.dataTransfer.getData('wish');
+  const cardData=e.dataTransfer.getData('card');
+  if(cardData){
+    const{slotIdx:fromSlot,ci}=JSON.parse(cardData);
+    if(fromSlot===slotIdx)return;
+    const card=D.puzzle.slots[fromSlot].cards.splice(ci,1)[0];
+    D.puzzle.slots[slotIdx].cards.push(card);
+    save();render();
+  } else if(poolData){
+    const ev=JSON.parse(poolData);
+    D.puzzle.slots[slotIdx].cards.push({type:'plan',name:ev.name,time:ev.time,addr:'',note:ev.note||'',cardTime:''});
+    save();render();
+  } else if(wishData){
+    const{cat,idx}=JSON.parse(wishData);
+    const w=D.wishlist[cat][idx];
+    D.puzzle.slots[slotIdx].cards.push({type:cat,name:w.name,addr:w.addr||'',note:w.note||'',cardTime:''});
+    D.wishlist[cat].splice(idx,1);
+    save();render();
+  }
+};
+
+// 退回卡片池（願望清單類型加回wishlist，行程類型直接消失出現在卡片池）
+window.returnCard=(slotIdx,ci)=>{
+  const card=D.puzzle.slots[slotIdx].cards[ci];
+  if(card.type&&WCAT[card.type]){
+    if(!D.wishlist[card.type])D.wishlist[card.type]=[];
+    D.wishlist[card.type].push({name:card.name,addr:card.addr||'',note:card.note||''});
+  }
+  // plan type cards just disappear from board (they're always in pool from day events)
+  D.puzzle.slots[slotIdx].cards.splice(ci,1);
+  save();render();
+};
+// 卡片拖拉（卡片之間移動）
+window.onCardDragStart=(e,slotIdx,ci)=>{
+  e.dataTransfer.setData('card',JSON.stringify({slotIdx,ci}));
+  e.currentTarget.classList.add('dragging');
+};
+// 卡片時間
+window.editCardTime=(slotIdx,ci)=>{UI.editCardTime=slotIdx+'-'+ci;render()};
+window.cancelCardTime=()=>{UI.editCardTime=null;render()};
+window.saveCardTime=(slotIdx,ci)=>{
+  const t=getSlotVal('ct-'+slotIdx+'-'+ci);
+  if(t)D.puzzle.slots[slotIdx].cards[ci].cardTime=t;
+  UI.editCardTime=null;save();render();
+};
+window.togPool=k=>{if(!UI.poolOpen)UI.poolOpen={};UI.poolOpen[k]=!UI.poolOpen[k];render()};
+window.showAddSlot=di=>{UI.addSlotDay=di;UI.insertBefore=null;render()};
+window.cancelAddSlot=()=>{UI.addSlotDay=null;render()};
+window.addPbSlot=di=>{
+  const t=getSlotVal('ns-time-'+di);if(!t)return;
+  D.puzzle.slots.push({dayIdx:di,time:t,label:t,cards:[]});
+  UI.addSlotDay=null;save();render();
+};
+window.showInsertBefore=slotIdx=>{UI.insertBefore=slotIdx;UI.addSlotDay=null;UI.editSlotTime=null;render()};
+window.cancelInsert=()=>{UI.insertBefore=null;render()};
+window.insertPbSlot=slotIdx=>{
+  const t=getSlotVal('ins-time-'+slotIdx);if(!t)return;
+  const slot=D.puzzle.slots[slotIdx];
+  D.puzzle.slots.splice(slotIdx,0,{dayIdx:slot.dayIdx,time:t,label:t,cards:[]});
+  UI.insertBefore=null;save();render();
+};
+window.editSlotTime=slotIdx=>{UI.editSlotTime=slotIdx;UI.insertBefore=null;UI.addSlotDay=null;render()};
+window.cancelSlotTimeEdit=()=>{UI.editSlotTime=null;render()};
+window.saveSlotTime=slotIdx=>{const t=getSlotVal('et-'+slotIdx);if(t)D.puzzle.slots[slotIdx].exactTime=t;UI.editSlotTime=null;save();render()};
+window.delPbSlot=slotIdx=>{if(!confirm('確定刪除這個時間格？格內的卡片也會一起刪除。'))return;D.puzzle.slots.splice(slotIdx,1);save();render()};
 
 window.togTipAdd=()=>{UI.showTipAdd=!UI.showTipAdd;render()};
-window.addTip=()=>{
-  const i=document.getElementById('tip-icon').value.trim()||'💡';
-  const t=document.getElementById('tip-title').value.trim();
-  const d=document.getElementById('tip-desc').value.trim();
-  const cat=document.getElementById('tip-cat-in').value.trim()||'📌 自訂';
-  if(!t)return;
-  let grp=D.tips.find(g=>g.cat===cat);
-  if(!grp){grp={cat,items:[]};D.tips.push(grp);}
-  grp.items.push({i,t,d});
-  UI.showTipAdd=false;saveToFirebase();render();
-};
+window.addTip=()=>{const i=document.getElementById('tip-icon').value.trim()||'💡';const t=document.getElementById('tip-title').value.trim();const d=document.getElementById('tip-desc').value.trim();const cat=document.getElementById('tip-cat-in').value.trim()||'📌 自訂';if(!t)return;let grp=D.tips.find(g=>g.cat===cat);if(!grp){grp={cat,items:[]};D.tips.push(grp);}grp.items.push({i,t,d});UI.showTipAdd=false;save();render();};
 window.editTip=(gi,ti)=>{UI.editTip=gi+'-'+ti;render()};
 window.cancelTipEdit=()=>{UI.editTip=null;render()};
-window.saveTip=(gi,ti)=>{
-  const i=document.getElementById('etip-icon').value.trim();
-  const t=document.getElementById('etip-title').value.trim();
-  const d=document.getElementById('etip-desc').value.trim();
-  if(!t)return;
-  D.tips[gi].items[ti]={...D.tips[gi].items[ti],i,t,d};
-  UI.editTip=null;saveToFirebase();render();
-};
-window.delTip=(gi,ti)=>{
-  D.tips[gi].items.splice(ti,1);
-  if(D.tips[gi].items.length===0)D.tips.splice(gi,1);
-  UI.editTip=null;saveToFirebase();render();
-};
+window.saveTip=(gi,ti)=>{const i=document.getElementById('etip-icon').value.trim();const t=document.getElementById('etip-title').value.trim();const d=document.getElementById('etip-desc').value.trim();if(!t)return;D.tips[gi].items[ti]={...D.tips[gi].items[ti],i,t,d};UI.editTip=null;save();render();};
+window.delTip=(gi,ti)=>{D.tips[gi].items.splice(ti,1);if(D.tips[gi].items.length===0)D.tips.splice(gi,1);UI.editTip=null;save();render();};
 
-window.togItem=(cat,idx)=>{D.luggage[cat][idx].c=!D.luggage[cat][idx].c;saveToFirebase();render()};
+window.togItem=(cat,idx)=>{D.luggage[cat][idx].c=!D.luggage[cat][idx].c;save();render()};
 window.editItem=(cat,idx)=>{UI.editItem=cat+'-'+idx;render()};
 window.cancelItemEdit=()=>{UI.editItem=null;render()};
-window.saveItem=(cat,idx)=>{const v=document.getElementById('ei-label').value.trim();if(!v)return;D.luggage[cat][idx].l=v;UI.editItem=null;saveToFirebase();render();};
-window.delItem=(cat,idx)=>{D.luggage[cat].splice(idx,1);if(D.luggage[cat].length===0)delete D.luggage[cat];UI.editItem=null;saveToFirebase();render();};
-window.addItem=()=>{const el=document.getElementById('new-item');const v=el.value.trim();if(!v)return;if(!D.luggage['自訂物品 ⭐'])D.luggage['自訂物品 ⭐']=[];D.luggage['自訂物品 ⭐'].push({l:v,t:'',c:false});saveToFirebase();render();};
-
+window.saveItem=(cat,idx)=>{const v=document.getElementById('ei-label').value.trim();if(!v)return;D.luggage[cat][idx].l=v;UI.editItem=null;save();render();};
+window.delItem=(cat,idx)=>{D.luggage[cat].splice(idx,1);if(D.luggage[cat].length===0)delete D.luggage[cat];UI.editItem=null;save();render();};
+window.addItem=()=>{const el=document.getElementById('new-item');const v=el.value.trim();if(!v)return;if(!D.luggage['自訂物品 ⭐'])D.luggage['自訂物品 ⭐']=[];D.luggage['自訂物品 ⭐'].push({l:v,t:'',c:false});save();render();};
 window.editInfo=k=>{UI.editInfo=k;render();setTimeout(()=>{const el=document.getElementById('if-'+k);if(el){el.focus();el.select();}},30);};
-window.saveInfo=k=>{const el=document.getElementById('if-'+k);if(el){if(!D.info)D.info={};D.info[k]=el.value.trim();}UI.editInfo=null;saveToFirebase();render();};
+window.saveInfo=k=>{const el=document.getElementById('if-'+k);if(el){if(!D.info)D.info={};D.info[k]=el.value.trim();}UI.editInfo=null;save();render();};
 </script>
 </body>
 </html>
