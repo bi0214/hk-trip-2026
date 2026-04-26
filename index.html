@@ -357,8 +357,7 @@ function render(){
             <input class="inp" id="w-price" placeholder="例：3500" type="number" min="0">
           </div>
         </div>`:''}
-        ${cat==='stay'?`<input class="inp" id="w-metro" placeholder="最近地鐵站（可留空）" style="margin-bottom:7px">`:''}
-        <input class="inp" id="w-note" placeholder="備註（可留空）" style="margin-bottom:8px">
+        <input class="inp" id="w-metro" placeholder="最近地鐵站（可留空）" style="margin-bottom:7px">        <input class="inp" id="w-note" placeholder="備註（可留空）" style="margin-bottom:8px">
         <div style="display:flex;gap:6px">
           <button class="btn btn-vl" style="font-size:11px;padding:6px 14px" onclick="window.addWish()">新增</button>
           <button class="btn" style="font-size:11px;padding:6px 14px" onclick="window.togWishAdd()">取消</button>
@@ -377,7 +376,7 @@ function render(){
             ${w.rooms?`<span style="font-size:11px;font-weight:700;background:#F0FFF4;color:#0B5E2A;padding:2px 8px;border-radius:8px">🚪 ${w.rooms} 間</span>`:''}
             ${w.price?`<span style="font-size:11px;font-weight:700;background:#E1F5EE;color:#085041;padding:2px 8px;border-radius:8px">💰 TWD ${Number(w.price).toLocaleString()}</span>`:''}
           </div>`:'';
-        const metroInfo=cat==='stay'&&w.metro?`<div class="wish-addr">🚇 ${esc(w.metro)}</div>`:'';
+        const metroInfo=w.metro?`<div class="wish-addr">🚇 ${esc(w.metro)}</div>`:'';
         if(isEdit){
           h+=`<div class="wish-card ${wc.cls}" style="cursor:default">
             <div class="wish-badge">${wc.badge}</div>
@@ -403,8 +402,7 @@ function render(){
                 <input class="inp" id="ew-price" value="${esc(w.price||'')}" placeholder="例：3500" type="number" min="0">
               </div>
             </div>`:''}
-            ${cat==='stay'?`<input class="inp" id="ew-metro" value="${esc(w.metro||'')}" placeholder="最近地鐵站（可留空）" style="margin-bottom:6px">`:''}
-            <input class="inp" id="ew-note" value="${esc(w.note||'')}" placeholder="備註（可留空）" style="margin-bottom:8px">
+            <input class="inp" id="ew-metro" value="${esc(w.metro||'')}" placeholder="最近地鐵站（可留空）" style="margin-bottom:6px">            <input class="inp" id="ew-note" value="${esc(w.note||'')}" placeholder="備註（可留空）" style="margin-bottom:8px">
             <div style="display:flex;gap:6px">
               <button class="btn btn-vl" style="font-size:11px;padding:5px 12px;flex:1" onclick="window.saveWish('${cat}',${wi})">儲存</button>
               <button class="btn" style="font-size:11px;padding:5px 10px" onclick="window.cancelWishEdit()">取消</button>
@@ -552,7 +550,7 @@ function render(){
               <div class="pb-card-name">${esc(card.name)}</div>
               ${card.type==='stay'&&(card.nights||card.rooms||card.price)?`<div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:2px">${card.nights?'<span style="font-size:9px;font-weight:700;background:#E8F4FF;color:#0A3E6E;padding:1px 5px;border-radius:6px">🌙 '+esc(card.nights)+' 晚</span>':''}${card.rooms?'<span style="font-size:9px;font-weight:700;background:#F0FFF4;color:#0B5E2A;padding:1px 5px;border-radius:6px">🚪 '+esc(card.rooms)+' 間</span>':''}${card.price?'<span style="font-size:9px;font-weight:700;background:#E1F5EE;color:#085041;padding:1px 5px;border-radius:6px">💰 TWD '+Number(card.price).toLocaleString()+'</span>':''}</div>`:''}
               ${card.addr?'<div class="pb-card-addr">📍 '+esc(card.addr)+'</div>':''}
-              ${card.type==='stay'&&card.metro?'<div class="pb-card-addr">🚇 '+esc(card.metro)+'</div>':''}
+              ${card.metro?'<div class="pb-card-addr">🚇 '+esc(card.metro)+'</div>':''}
               ${card.note?'<div class="pb-card-note">💬 '+esc(card.note)+'</div>':''}`;
             // 卡片時間編輯
             if(isEditCardTime){
@@ -680,15 +678,15 @@ window.addWish=()=>{
   const addr=document.getElementById('w-addr').value.trim();
   const note=document.getElementById('w-note').value.trim();
   const item={name,addr,note};
+  const metroEl=document.getElementById('w-metro');
+  if(metroEl&&metroEl.value.trim())item.metro=metroEl.value.trim();
   if(UI.wbCat==='stay'){
-    const nightsEl=document.getElementById('w-nights');
-    const roomsEl=document.getElementById('w-rooms');
-    const priceEl=document.getElementById('w-price');
-    const metroEl=document.getElementById('w-metro');
-    if(nightsEl&&nightsEl.value)item.nights=nightsEl.value;
-    if(roomsEl&&roomsEl.value)item.rooms=roomsEl.value;
-    if(priceEl&&priceEl.value)item.price=priceEl.value;
-    if(metroEl&&metroEl.value)item.metro=metroEl.value.trim();
+    const ne=document.getElementById('w-nights');
+    const ro=document.getElementById('w-rooms');
+    const pe=document.getElementById('w-price');
+    if(ne&&ne.value)item.nights=ne.value;
+    if(ro&&ro.value)item.rooms=ro.value;
+    if(pe&&pe.value)item.price=pe.value;
   }
   if(!D.wishlist[UI.wbCat])D.wishlist[UI.wbCat]=[];
   D.wishlist[UI.wbCat].push(item);UI.showWishAdd=false;save();render();
@@ -700,15 +698,15 @@ window.saveWish=(cat,wi)=>{
   const addr=document.getElementById('ew-addr').value.trim();
   const note=document.getElementById('ew-note').value.trim();
   const item={...D.wishlist[cat][wi],name,addr,note};
+  const me=document.getElementById('ew-metro');
+  item.metro=me?me.value.trim():'';
   if(cat==='stay'){
     const ne=document.getElementById('ew-nights');
     const re2=document.getElementById('ew-rooms');
     const pe=document.getElementById('ew-price');
-    const me=document.getElementById('ew-metro');
     item.nights=ne&&ne.value?ne.value:'';
     item.rooms=re2&&re2.value?re2.value:'';
     item.price=pe&&pe.value?pe.value:'';
-    item.metro=me?me.value.trim():'';
   }
   D.wishlist[cat][wi]=item;
   UI.editWish=null;save();render();
@@ -762,8 +760,8 @@ window.returnCard=(slotIdx,ci)=>{
   const card=D.puzzle.slots[slotIdx].cards[ci];
   if(card.type&&WCAT[card.type]){
     if(!D.wishlist[card.type])D.wishlist[card.type]=[];
-    const item={name:card.name,addr:card.addr||'',note:card.note||''};
-    if(card.type==='stay'){if(card.nights)item.nights=card.nights;if(card.rooms)item.rooms=card.rooms;if(card.price)item.price=card.price;if(card.metro)item.metro=card.metro;}
+    const item={name:card.name,addr:card.addr||'',note:card.note||'',metro:card.metro||''};
+    if(card.type==='stay'){if(card.nights)item.nights=card.nights;if(card.rooms)item.rooms=card.rooms;if(card.price)item.price=card.price;}
     D.wishlist[card.type].push(item);
   }
   D.puzzle.slots[slotIdx].cards.splice(ci,1);
